@@ -1,0 +1,60 @@
+import pygame
+from grid import Grid
+from player import Player
+from enemy import Enemy
+from game_elements import loadImages
+
+class BombermanGame:
+    def __init__(self, rows, cols, cell_size):
+        self.rows = rows
+        self.cols = cols
+        self.cell_size = cell_size
+        self.screen = pygame.display.set_mode((self.rows * self.cell_size, self.cols * self.cell_size))
+        pygame.display.set_caption('Bomberman AI')
+        self.clock = pygame.time.Clock()
+        self.running = True
+
+        #Griglia ed elementi
+        self.grid = Grid(rows, cols)
+        self.player = Player(1, 1)
+        self.enemies = [Enemy(rows - 2, cols - 2)]
+        self.images = loadImages(cell_size)
+
+        #Inizializzazione griglia
+        self.grid.setCell(self.player.row, self.player.col, "player")
+        for enemy in self.enemies:
+            self.grid.setCell(enemy.row, enemy.col, "enemy")
+
+
+    def handleEvent(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.running = False
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_UP:
+                    self.player.move("up", self.grid)
+                elif event.key == pygame.K_DOWN:
+                    self.player.move("down", self.grid)
+                elif event.key == pygame.K_LEFT:
+                    self.player.move("left", self.grid)
+                elif event.key == pygame.K_RIGHT:
+                    self.player.move("right", self.grid)
+                elif event.key == pygame.K_SPACE:
+                    self.player.place_bomb(self.grid)
+
+    def update(self):
+        #moving enemies
+        for enemy in self.enemies:
+            enemy.move(self.grid)
+
+    def draw(self):
+        self.screen.fill((0, 0, 0))
+        self.grid.draw(self.screen, self.images, self.cell_size)
+        pygame.display.flip()
+
+    def run(self):
+        while self.running:
+            self.handleEvent()
+            self.update()
+            self.draw()
+            self.clock.tick(30)
