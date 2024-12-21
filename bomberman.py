@@ -49,7 +49,7 @@ class BombermanGame:
 
     def draw(self):
         self.screen.fill((0, 0, 0))
-        self.grid.draw(self.screen, self.images, self.cell_size)
+        self.grid.printGrid(self.screen, self.images, self.cell_size)
         pygame.display.flip()
 
     def run(self):
