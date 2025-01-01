@@ -13,9 +13,14 @@ class Grid:
     def isFree(self, rows, cols):
         return self.grid[rows][cols] == 0
 
-    def printGrid(self, screen, images, cell_size):
+    def print_grid(self, screen, images, cell_size):
         for r in range(self.rows):
             for c in range(self.cols):
                 value = self.grid[r][c]
                 image = images.get(value, images["empty"])
                 screen.blit(image, (r * cell_size, c * cell_size))
+
+    def print_debug(self):
+        for row in self.grid:
+            print(' '.join(str(cell) for cell in row))
+        print("\n")

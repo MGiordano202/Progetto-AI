@@ -9,10 +9,11 @@ class BombermanGame:
         self.rows = rows
         self.cols = cols
         self.cell_size = cell_size
-        self.screen = pygame.display.set_mode((self.rows * self.cell_size, self.cols * self.cell_size))
-        pygame.display.set_caption('Bomberman AI')
         self.clock = pygame.time.Clock()
         self.running = True
+        self.screen = pygame.display.set_mode((self.rows * self.cell_size, self.cols * self.cell_size))
+        pygame.display.set_caption('Bomberman AI')
+
 
         #Griglia ed elementi
         self.grid = Grid(rows, cols)
@@ -26,7 +27,7 @@ class BombermanGame:
             self.grid.setCell(enemy.row, enemy.col, "enemy")
 
 
-    def handleEvent(self):
+    def handle_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
@@ -43,18 +44,24 @@ class BombermanGame:
                     self.player.place_bomb(self.grid)
 
     def update(self):
-        #moving enemies
+        # Muove i nemici
         for enemy in self.enemies:
+            old_row, old_col = enemy.row, enemy.col
             enemy.move(self.grid)
+            # Libera la cella precedente
+            self.grid.setCell(old_row, old_col, "empty")
+            # Aggiorna la nuova posizione sulla griglia
+            self.grid.setCell(enemy.row, enemy.col, "enemy")
 
     def draw(self):
-        self.screen.fill((0, 0, 0))
-        self.grid.printGrid(self.screen, self.images, self.cell_size)
+        self.screen.fill((0, 110, 0))
+        self.grid.print_grid(self.screen, self.images, self.cell_size)
         pygame.display.flip()
 
     def run(self):
         while self.running:
-            self.handleEvent()
+            self.handle_events()
             self.update()
             self.draw()
+            self.grid.print_debug()
             self.clock.tick(30)
