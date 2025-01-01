@@ -3,10 +3,10 @@ from bomberman import BombermanGame
 
 def main():
     pygame.init()
-    game = BombermanGame(rows = 13, cols = 15, cell_size = 50)
+    game = BombermanGame(rows = 10, cols = 10, cell_size = 30)
     game.run()
-
     pygame.quit()
+
 
 
 if __name__ == '__main__':

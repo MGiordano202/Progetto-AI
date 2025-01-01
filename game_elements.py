@@ -1,6 +1,6 @@
 import pygame
 
-def loadImages(cell_size):
+def load_images(cell_size):
     images = {
         "empty": pygame.image.load("img/empty.png"),
         "player": pygame.image.load("img/player.png"),

@@ -2,7 +2,7 @@ import pygame
 from grid import Grid
 from player import Player
 from enemy import Enemy
-from game_elements import loadImages
+from game_elements import load_images
 
 class BombermanGame:
     def __init__(self, rows, cols, cell_size):
@@ -19,12 +19,12 @@ class BombermanGame:
         self.grid = Grid(rows, cols)
         self.player = Player(1, 1)
         self.enemies = [Enemy(rows - 2, cols - 2)]
-        self.images = loadImages(cell_size)
+        self.images = load_images(cell_size)
 
         #Inizializzazione griglia
-        self.grid.setCell(self.player.row, self.player.col, "player")
+        self.grid.set_cell(self.player.row, self.player.col, "player")
         for enemy in self.enemies:
-            self.grid.setCell(enemy.row, enemy.col, "enemy")
+            self.grid.set_cell(enemy.row, enemy.col, "enemy")
 
 
     def handle_events(self):
@@ -32,6 +32,7 @@ class BombermanGame:
             if event.type == pygame.QUIT:
                 self.running = False
             elif event.type == pygame.KEYDOWN:
+                print(f"Key pressed: {pygame.key.name(event.key)}")
                 if event.key == pygame.K_UP:
                     self.player.move("up", self.grid)
                 elif event.key == pygame.K_DOWN:
@@ -47,11 +48,11 @@ class BombermanGame:
         # Muove i nemici
         for enemy in self.enemies:
             old_row, old_col = enemy.row, enemy.col
-            enemy.move(self.grid)
+            enemy.update(self.grid)
             # Libera la cella precedente
-            self.grid.setCell(old_row, old_col, "empty")
+            self.grid.set_cell(old_row, old_col, 0)
             # Aggiorna la nuova posizione sulla griglia
-            self.grid.setCell(enemy.row, enemy.col, "enemy")
+            self.grid.set_cell(enemy.row, enemy.col, "enemy")
 
     def draw(self):
         self.screen.fill((0, 110, 0))
