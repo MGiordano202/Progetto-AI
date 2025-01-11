@@ -1,4 +1,6 @@
 import pygame
+
+from bomb import Bomb
 from grid import Grid
 from player import Player
 from enemy import Enemy
@@ -20,6 +22,8 @@ class BombermanGame:
         self.player = Player(1, 1)
         self.enemies = [Enemy(rows - 2, cols - 2)]
         self.images = load_images(cell_size)
+        self.bombs =[]
+
 
         #Inizializzazione griglia
         self.grid.set_cell(self.player.row, self.player.col, "player")
@@ -42,7 +46,9 @@ class BombermanGame:
                 elif event.key == pygame.K_RIGHT:
                     self.player.move("right", self.grid)
                 elif event.key == pygame.K_SPACE:
-                    self.player.place_bomb(self.grid)
+                    bomb = Bomb(self.player.row, self.player.col)
+                    self.bombs.append(bomb)
+                    self.grid.set_cell(bomb.row, bomb.col, "bomb")
 
     def update(self):
         # Muove i nemici
