@@ -24,7 +24,7 @@ class Enemy:
                 grid.set_cell(self.row, self.col, 0) # Ripristina il blocco precedente
                 self.row = new_row # Aggiorna la nuova posizione
                 self.col = new_col
-                grid.set_cell(self.row, self.col, "enemy") # Imposta il nuovo blocco come occupato dal nemico
+                grid.set_cell(self.row, self.col, "E") # Imposta il nuovo blocco come occupato dal nemico
                 moved = True
                 break
         if not moved:

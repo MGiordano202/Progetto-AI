@@ -19,4 +19,4 @@ class Bomb:
             for i in range(-1, radius + 1):
                 r, c = self.row + dr * i, self.col + dc * i
                 if 0 <= grid.rows and 0 <= grid.cols:
-                    grid.set_cell(r, c, "explosion")
+                    grid.set_cell(r, c, "exp")

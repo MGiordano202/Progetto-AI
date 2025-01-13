@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89a154d6-1bc2-494b-9e36-2de99f1d532c" name="Changes" comment="Fifth Commit: adjustment on the movevents of the player and the enemy, now they can move in the grid almost correctly. Enemy now is delayed and moves slower, TO DO: Review player and start with the algorithm">
-      <change afterPath="$PROJECT_DIR$/bomb.py" afterDir="false" />
+    <list default="true" id="89a154d6-1bc2-494b-9e36-2de99f1d532c" name="Changes" comment="Sixth commit: addedd class bomb">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bomb.py" beforeDir="false" afterPath="$PROJECT_DIR$/bomb.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bomberman.py" beforeDir="false" afterPath="$PROJECT_DIR$/bomberman.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_elements.py" beforeDir="false" afterPath="$PROJECT_DIR$/game_elements.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/grid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,8 +106,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-PY-242.24807.21" />
-        <option value="bundled-python-sdk-00717045f1d3-399fe30bd8c1-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.24807.21" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-PY-243.22562.220" />
+        <option value="bundled-python-sdk-0fc6c617c4bd-9a18a617cbe4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.22562.220" />
       </set>
     </attachedChunks>
   </component>
@@ -124,7 +128,10 @@
       <workItem from="1734859910453" duration="1184000" />
       <workItem from="1735556197885" duration="5402000" />
       <workItem from="1735755335504" duration="6206000" />
-      <workItem from="1736588668496" duration="7688000" />
+      <workItem from="1736588668496" duration="8603000" />
+      <workItem from="1736677563698" duration="2814000" />
+      <workItem from="1736681238959" duration="2070000" />
+      <workItem from="1736761582722" duration="1014000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -158,7 +165,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735760936511</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Sixth commit: addedd class bomb">
+      <option name="closed" value="true" />
+      <created>1736622653032</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1736622653032</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,9 +184,10 @@
     <MESSAGE value="Second Commit: definition of the classes for the game" />
     <MESSAGE value="Third commit: added images and a try-run" />
     <MESSAGE value="Fifth Commit: adjustment on the movevents of the player and the enemy, now they can move in the grid almost correctly. Enemy now is delayed and moves slower, TO DO: Review player and start with the algorithm" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fifth Commit: adjustment on the movevents of the player and the enemy, now they can move in the grid almost correctly. Enemy now is delayed and moves slower, TO DO: Review player and start with the algorithm" />
+    <MESSAGE value="Sixth commit: addedd class bomb" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sixth commit: addedd class bomb" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Progetto_AI$main.coverage" NAME="main Coverage Results" MODIFIED="1736613412096" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Progetto_AI$main.coverage" NAME="main Coverage Results" MODIFIED="1736762555071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

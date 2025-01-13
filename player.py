@@ -20,7 +20,7 @@ class Player:
                 # Aggiorna la posizione del giocatore
                 self.row, self.col = new_row, new_col
                 # Imposta la nuova posizione sulla griglia
-                grid.set_cell(self.row, self.col, "player")
+                grid.set_cell(self.row, self.col, "P")
 
     def place_bomb(self, grid):
-        grid.set_cell(self.row, self.col, "bomb")
+        grid.set_cell(self.row, self.col, "B")

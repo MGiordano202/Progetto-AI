@@ -11,7 +11,7 @@ class Grid:
         return self.grid[rows][cols]
 
     def is_passable(self, row, col):
-        return self.grid[row][col] in [0, "player"]  # Consente al nemico di muoversi su celle libere o occupate dal giocatore
+        return self.grid[row][col] in [0, "P"]  # Consente al nemico di muoversi su celle libere o occupate dal giocatore
 
     def is_free(self, rows, cols):
         return self.grid[rows][cols] == 0
