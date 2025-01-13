@@ -3,18 +3,13 @@ class Player:
         self.row = row
         self.col = col
 
-    def move(self, direction, grid):
-        moves = {"up": (-1, 0),
-                 "down": (1, 0),
-                 "left": (0, -1),
-                 "right": (0, 1)
-                 }
-        if direction in moves:
-            dr, dc = moves[direction]
-            new_row, new_col = self.row + dr, self.col + dc
+    def move_towards_goal(self, grid, pathfinder, goal):
+        path = pathfinder.find_path((self.row, self.col), goal)  # Trova il percorso
+        if path:
+            new_row, new_col = path[0]
 
             # Controlla se la nuova posizione è valida
-            if 0 <= new_row < grid.rows and 0 <= new_col < grid.cols and grid.is_free(new_row, new_col):
+            if 0 <= new_row < grid.rows and 0 <= new_col < grid.cols and grid.is_passable(new_row, new_col):
                 # Libera la cella precedente
                 grid.set_cell(self.row, self.col, 0)
                 # Aggiorna la posizione del giocatore

@@ -1,17 +1,20 @@
 import random
 
 class Enemy:
-    def __init__(self, row, col, move_delay = 30):
+    def __init__(self, row, col, pathfinder,move_delay = 30):
         self.row = row
         self.col = col
+        self.pathfinder = pathfinder
         self.move_delay = move_delay # Tempo di ritardo in frame
         self.move_counter = 0 # Contatore per il ritardo
 
     def update(self, grid):
+        # Aggiorna il contatore per il ritardo
         self.move_counter += 1
         if self.move_counter >= self.move_delay:
             self.move(grid)
             self.move_counter = 0
+
 
     def move(self, grid):
         moves = [(-1, 0), (0, 1), (1, 0), (0, -1)]
