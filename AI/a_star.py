@@ -4,10 +4,11 @@ class Astar:
     def __init__(self, grid):
         self.grid = grid
 
-    def heuristic(self, a, b):
-        return abs(a[0] - [b[0]]) + abs(a[1] - [b[1]])
+    @staticmethod
+    def heuristic(a, b):
+        return abs(a[0] - b[0]) + abs(a[1] - b[1])
 
-    def a_star(self, start, goal):
+    def find_path(self, start, goal):
         open_set = []
         heappush(open_set, (0, start))
         came_from = {}

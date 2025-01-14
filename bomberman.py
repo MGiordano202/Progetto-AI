@@ -20,22 +20,20 @@ class BombermanGame:
 
         #Griglia ed elementi
         self.grid = Grid(rows, cols)
+        self.grid.generate_bomberman_map()
         self.player = Player(1, 1)
         self.pathfinder = Astar(self.grid)
-        self.enemies = [Enemy(rows - 2, cols - 2, self.pathfinder)]
+        #self.enemies = [Enemy(rows - 2, cols - 2, self.pathfinder)]
         self.images = load_images(cell_size)
         self.bombs =[]
 
 
         #Inizializzazione griglia
         self.grid.set_cell(self.player.row, self.player.col, "P")
-        for enemy in self.enemies:
-            self.grid.set_cell(enemy.row, enemy.col, "E")
+        #for enemy in self.enemies:
+            #self.grid.set_cell(enemy.row, enemy.col, "E")
 
-        #Inizializzazione muri
-        self.add_walls()
-
-        self.player_goal = (rows - 1, cols - 1)# Obiettivo del giocatore
+        self.player_goal = (rows - 3, cols - 2) # Obiettivo del giocatore
 
     def add_walls(self):
         wall_positions = [(2, 2), (2, 3), (3, 2), (3, 3)]  # Example positions
@@ -46,13 +44,13 @@ class BombermanGame:
 
     def update(self):
         # Muove i nemici
-        for enemy in self.enemies:
-            old_row, old_col = enemy.row, enemy.col
-            enemy.update(self.grid)
+        #for enemy in self.enemies:
+            #old_row, old_col = enemy.row, enemy.col
+            #enemy.update(self.grid)
             # Libera la cella precedente
-            self.grid.set_cell(old_row, old_col, 0)
+            #self.grid.set_cell(old_row, old_col, 0)
             # Aggiorna la nuova posizione sulla griglia
-            self.grid.set_cell(enemy.row, enemy.col, "E")
+            #self.grid.set_cell(enemy.row, enemy.col, "E")
 
         self.player.move_towards_goal(self.grid, self.pathfinder, self.player_goal)
 
@@ -73,4 +71,4 @@ class BombermanGame:
             self.update()
             self.draw()
             self.grid.print_debug()
-            self.clock.tick(30)
+            self.clock.tick(10)
