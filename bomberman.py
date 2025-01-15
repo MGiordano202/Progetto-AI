@@ -18,7 +18,7 @@ class BombermanGame:
         pygame.display.set_caption('Bomberman AI')
 
 
-        #Griglia ed elementi
+        # Griglia ed elementi
         self.grid = Grid(rows, cols)
         self.grid.generate_bomberman_map()
         self.player = Player(1, 1)
@@ -28,13 +28,15 @@ class BombermanGame:
         self.bombs =[]
 
 
-        #Inizializzazione griglia
+        # Inizializzazione griglia
         self.grid.set_cell(self.player.row, self.player.col, "P")
         #for enemy in self.enemies:
             #self.grid.set_cell(enemy.row, enemy.col, "E")
 
-        self.player_goal = (rows - 3, cols - 2) # Obiettivo del giocatore
+        self.grid.set_cell(8,8, "G")
+        self.player_goal = (8,8)  # Obiettivo del giocatore
 
+        # Esempio di muri (probabilmente da rimuovere)
     def add_walls(self):
         wall_positions = [(2, 2), (2, 3), (3, 2), (3, 3)]  # Example positions
         for row, col in wall_positions:
@@ -52,7 +54,10 @@ class BombermanGame:
             # Aggiorna la nuova posizione sulla griglia
             #self.grid.set_cell(enemy.row, enemy.col, "E")
 
+        # Muove il giocatore
         self.player.move_towards_goal(self.grid, self.pathfinder, self.player_goal)
+
+
 
     def draw(self):
         self.screen.fill((0, 110, 0))
@@ -71,4 +76,4 @@ class BombermanGame:
             self.update()
             self.draw()
             self.grid.print_debug()
-            self.clock.tick(10)
+            self.clock.tick(5)

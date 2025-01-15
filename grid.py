@@ -14,8 +14,21 @@ class Grid:
     def get_cell(self, rows, cols):
         return self.grid[rows][cols]
 
+    def get_goal(self):
+        for r in range(self.rows):
+            for c in range(self.cols):
+                if self.grid[r][c] == "G":
+                    return r, c
+        return None
+
     def is_passable(self, rows, cols):
-        return self.grid[rows][cols] in ["0", "P"]  # Consente al nemico di muoversi su celle libere o occupate dal giocatore
+        if rows < 0 or rows >= self.rows or cols < 0 or cols >= self.cols:
+            print(f"Posizione non valida: ({rows}, {cols})")
+            return False
+        cell = self.grid[rows][cols]
+        result = cell in ["0", "P", "G"]
+
+        return result
 
     def set_wall(self, rows, cols):
         self.grid[rows][cols] = "W"
@@ -30,10 +43,19 @@ class Grid:
         neighbors = []
         for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]: #movivimenti sulla griglia
             new_row, new_col = rows + dr, cols + dc
-            if 0 <= new_row < self.rows and 0 <= new_col < self.cols:
-                if self.is_passable(new_row, new_col):
-                    neighbors.append((new_row, new_col))
+            if 0 <= new_row < self.rows and 0 <= new_col < self.cols and self.is_passable(new_row, new_col):
+                neighbors.append((new_row, new_col))
+        print(f"Vicini di ({rows}, {cols}): {neighbors}")
         return neighbors
+
+    def get_cost(self, rows, cols):
+        if self.grid[rows][cols] == "0": #cella libera
+            return 1
+        elif self.grid[rows][cols] == "D": #cella distruttibile
+            return 5
+        elif self.grid[rows][cols] == "G":  # Goal
+            return 1
+        return float("inf")
 
     def add_walls(self):
         wall_positions = [(2, 0)]  # Example positions
@@ -57,19 +79,18 @@ class Grid:
         # Aggiunge blocchi distruttibili casuali
         for r in range(1, self.rows - 1):
             for c in range(1, self.cols - 1):
-                if self.grid[r][c] == "0" and random.random() < 0.1:  # 60% di probabilità di blocco distruttibile
+                if self.grid[r][c] == "0" and random.random() < 0.04:  # 4% di probabilità di blocco distruttibile
                     self.grid[r][c] = "D"
 
         # Rimuove blocchi vicino alle posizioni iniziali per il giocatore e i nemici
-        self._clear_initial_areas()
-        # Imposta il goal come "G"
-        self.grid[self.rows - 3][self.cols - 2] = "G"
+        self.clear_initial_areas()
 
-    def _clear_initial_areas(self):
+
+    def clear_initial_areas(self):
         """Libera le aree iniziali per il giocatore e i nemici."""
         initial_positions = [(1, 1), (1, 2), (2, 1),  # Posizione del giocatore
                              (self.rows - 2, self.cols - 2),  # Posizione del nemico
-                             (self.rows - 3, self.cols - 2), (self.rows - 2, self.cols - 3)]  # Vicinanze del nemico
+                              (self.rows - 2, self.cols - 3)]  # Vicinanze del nemico
         for r, c in initial_positions:
             self.grid[r][c] = "0"
 
@@ -126,3 +147,5 @@ class Grid:
         for row in self.grid:
             print(' '.join(str(cell) for cell in row))
         print("\n")
+
+
