@@ -37,7 +37,7 @@ class Grid:
         return self.grid[rows][cols] == "W"
 
     def is_free(self, rows, cols):
-        return self.grid[rows][cols] == 0
+        return self.grid[rows][cols] == "0"
 
     def get_neighbors(self, rows, cols):
         neighbors = []
@@ -52,7 +52,7 @@ class Grid:
         if self.grid[rows][cols] == "0": #cella libera
             return 1
         elif self.grid[rows][cols] == "D": #cella distruttibile
-            return 5
+            return 2
         elif self.grid[rows][cols] == "G":  # Goal
             return 1
         return float("inf")
@@ -64,10 +64,7 @@ class Grid:
 
     def generate_bomberman_map(self):
         """Genera una mappa in stile Bomberman con blocchi distruttibili e indistruttibili."""
-        # Riempie la griglia con muri indistruttibili
         self.grid = [["W" for _ in range(self.cols)] for _ in range(self.rows)]
-
-        # Lascia i bordi indistruttibili, crea l'interno vuoto
         for r in range(1, self.rows - 1):
             for c in range(1, self.cols - 1):
                 # Blocchi indistruttibili ogni 2 celle (griglia fissa)
@@ -76,21 +73,21 @@ class Grid:
                 else:
                     self.grid[r][c] = "0"
 
-        # Aggiunge blocchi distruttibili casuali
+        # Aggiunge blocchi distruttibili casualmente
         for r in range(1, self.rows - 1):
             for c in range(1, self.cols - 1):
-                if self.grid[r][c] == "0" and random.random() < 0.04:  # 4% di probabilità di blocco distruttibile
+                if self.grid[r][c] == "0" and random.random() < 0.05:  # 4% di probabilità di blocco distruttibile
                     self.grid[r][c] = "D"
 
-        # Rimuove blocchi vicino alle posizioni iniziali per il giocatore e i nemici
+
         self.clear_initial_areas()
 
 
     def clear_initial_areas(self):
         """Libera le aree iniziali per il giocatore e i nemici."""
-        initial_positions = [(1, 1), (1, 2), (2, 1),  # Posizione del giocatore
-                             (self.rows - 2, self.cols - 2),  # Posizione del nemico
-                              (self.rows - 2, self.cols - 3)]  # Vicinanze del nemico
+        initial_positions = [(1, 1), (1, 2), (2, 1),
+                             (self.rows - 2, self.cols - 2),
+                              (self.rows - 2, self.cols - 3)]
         for r, c in initial_positions:
             self.grid[r][c] = "0"
 

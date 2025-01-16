@@ -23,9 +23,15 @@ class Astar:
                 return self.reconstruct_path(came_from, current)
 
             for neighbor in self.grid.get_neighbors(*current):
-                tentative_g_score = g_score[current] + self.grid.get_cost(*neighbor)
+                cell_type = self.grid.get_cell(*neighbor)
+                if cell_type == "W":
+                    continue
+                elif cell_type == "D":
+                    tentative_g_score = g_score[current] + self.grid.get_cost(*neighbor)
+                else:
+                    tentative_g_score = g_score[current] + self.grid.get_cost(*neighbor)
 
-                if tentative_g_score < g_score.get(neighbor, float('inf')):
+                if neighbor not in g_score or tentative_g_score < g_score.get(neighbor, float('inf')):
                     came_from[neighbor] = current
                     g_score[neighbor] = tentative_g_score
                     f_score[neighbor] = tentative_g_score + self.heuristic(neighbor, goal)
