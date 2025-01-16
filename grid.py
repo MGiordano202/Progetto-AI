@@ -43,8 +43,10 @@ class Grid:
         neighbors = []
         for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]: #movivimenti sulla griglia
             new_row, new_col = rows + dr, cols + dc
-            if 0 <= new_row < self.rows and 0 <= new_col < self.cols and self.is_passable(new_row, new_col):
-                neighbors.append((new_row, new_col))
+            if 0 <= new_row < self.rows and 0 <= new_col < self.cols:
+                cell = self.get_cell(new_row, new_col)
+                if cell in ["0", "G", "D"]:
+                    neighbors.append((new_row, new_col))
         print(f"Vicini di ({rows}, {cols}): {neighbors}")
         return neighbors
 
@@ -76,18 +78,19 @@ class Grid:
         # Aggiunge blocchi distruttibili casualmente
         for r in range(1, self.rows - 1):
             for c in range(1, self.cols - 1):
-                if self.grid[r][c] == "0" and random.random() < 0.05:  # 4% di probabilità di blocco distruttibile
+                if self.grid[r][c] == "0" and random.random() < 0.5:  # 4% di probabilità di blocco distruttibile
                     self.grid[r][c] = "D"
 
-
         self.clear_initial_areas()
+
 
 
     def clear_initial_areas(self):
         """Libera le aree iniziali per il giocatore e i nemici."""
         initial_positions = [(1, 1), (1, 2), (2, 1),
-                             (self.rows - 2, self.cols - 2),
-                              (self.rows - 2, self.cols - 3)]
+                             (self.rows - 1, self.cols - 1),
+                             (self.rows - 1, self.cols - 2),
+                             (self.rows - 2, self.cols - 1)]
         for r, c in initial_positions:
             self.grid[r][c] = "0"
 

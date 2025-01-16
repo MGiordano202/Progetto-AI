@@ -14,7 +14,7 @@ class BombermanGame:
         self.cell_size = cell_size
         self.clock = pygame.time.Clock()
         self.running = True
-        self.manual_control = True  # Inizia in modalità manuale
+        self.manual_control = False  # Inizia in modalità manuale
         self.screen = pygame.display.set_mode((self.rows * self.cell_size, self.cols * self.cell_size))
         pygame.display.set_caption('Bomberman AI')
 
@@ -26,7 +26,7 @@ class BombermanGame:
         self.pathfinder = Astar(self.grid)
         #self.enemies = [Enemy(rows - 2, cols - 2, self.pathfinder)]
         self.images = load_images(cell_size)
-        self.bombs =[]
+        self.bombs = []
 
 
         # Inizializzazione griglia
@@ -55,23 +55,29 @@ class BombermanGame:
             # Aggiorna la nuova posizione sulla griglia
             #self.grid.set_cell(enemy.row, enemy.col, "E")
         # Muove il giocatore e aggiorna il movimento del giocatore
-        if not self.manual_control:
-            self.player.check_bomb_status(self.grid)
-            self.player.move_towards_goal(self.grid, self.pathfinder, self.player_goal)
+
 
         # Gestione delle bombe
         for bomb in self.bombs[:]:
+            bomb.update()
             if bomb.has_exploded():
                 bomb.explode(self.grid)
                 self.bombs.remove(bomb)
+                print("Bomba esplosa!,Ricalcolo del percorso")
 
-        #Rimuove le esplosioni dalla griglia
+
+        # Rimuove le esplosioni dalla griglia
         for row in range(self.rows):
             for col in range(self.cols):
                 if self.grid.get_cell(row, col) == "e":
                     self.grid.set_cell(row, col, "0")
 
-
+        if not self.manual_control:
+            if any(bomb.row == self.player.row and bomb.col == self.player.col for bomb in self.bombs):
+                print("Aspettando la distruzione del blocco")
+                return
+            self.player.check_bomb_status(self.grid)
+            self.player.move_towards_goal(self.grid, self.pathfinder, self.player_goal)
 
 
 

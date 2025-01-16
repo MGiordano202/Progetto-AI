@@ -9,6 +9,7 @@ def load_images(cell_size):
         "W": pygame.image.load("img/wall.png"),
         "D": pygame.image.load("img/wooden_box.png"),
         "G": pygame.image.load("img/doors.png"),
+        "e": pygame.image.load("img/explosion.png"),
     }
 
     for key in images:

@@ -13,7 +13,7 @@ class Bomb:
 
     def explode(self, grid):
         radius = 2
-        grid.set_cell(self.row, self.col, "e")
+        grid.set_cell(self.row, self.col, "0")
 
         for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
             for i in range(1, radius + 1): #prima -1, radius + 1
@@ -23,6 +23,10 @@ class Bomb:
                         break  # Ferma l'esplosione
                     elif grid.get_cell(r, c) == "D":
                         grid.set_cell(r, c, "e")
-                        break
+                        continue
                     else:  # Celle vuote o altre
-                        grid.set_cell(r, c, "0")
+                        grid.set_cell(r, c, "e")
+
+    def update(self):
+        if self.has_exploded():
+            self.timer = 0
