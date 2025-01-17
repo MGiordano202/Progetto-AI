@@ -45,7 +45,7 @@ class Grid:
             new_row, new_col = rows + dr, cols + dc
             if 0 <= new_row < self.rows and 0 <= new_col < self.cols:
                 cell = self.get_cell(new_row, new_col)
-                if cell in ["0", "G", "D"]:
+                if cell in ["0", "G", "D", "P"]:
                     neighbors.append((new_row, new_col))
         print(f"Vicini di ({rows}, {cols}): {neighbors}")
         return neighbors

@@ -54,31 +54,23 @@ class BombermanGame:
             #self.grid.set_cell(old_row, old_col, 0)
             # Aggiorna la nuova posizione sulla griglia
             #self.grid.set_cell(enemy.row, enemy.col, "E")
-        # Muove il giocatore e aggiorna il movimento del giocatore
-
-
-        # Gestione delle bombe
-        for bomb in self.bombs[:]:
-            bomb.update()
-            if bomb.has_exploded():
-                bomb.explode(self.grid)
-                self.bombs.remove(bomb)
-                print("Bomba esplosa!,Ricalcolo del percorso")
-
-
-        # Rimuove le esplosioni dalla griglia
-        for row in range(self.rows):
-            for col in range(self.cols):
-                if self.grid.get_cell(row, col) == "e":
-                    self.grid.set_cell(row, col, "0")
 
         if not self.manual_control:
             if any(bomb.row == self.player.row and bomb.col == self.player.col for bomb in self.bombs):
                 print("Aspettando la distruzione del blocco")
+                self.update_bombs()
                 return
-            self.player.check_bomb_status(self.grid)
-            self.player.move_towards_goal(self.grid, self.pathfinder, self.player_goal)
+            self.player.move_towards_goal(self.grid, self.pathfinder, self.player_goal, self.bombs)
 
+        # Gestione delle bombe
+        self.update_bombs()
+
+    def update_bombs(self):
+        for bomb in self.bombs[:]:
+            if bomb.has_exploded():
+                print(f"Bomba esplosa in posizione: ({bomb.row}, {bomb.col})")
+                bomb.explode(self.grid)
+                self.bombs.remove(bomb)
 
 
     def handle_events(self):
@@ -101,7 +93,8 @@ class BombermanGame:
                     elif event.key == pygame.K_d:
                         self.move_player(0, 1)
                     elif event.key == pygame.K_SPACE:  # Spazio per piazzare una bomba
-                        self.bombs.append(self.player.place_bomb(self.grid))
+                        self.bombs.append(self.player.place_bomb(self.grid, self.bombs))
+
 
     def move_player(self, d_row, d_col):
         new_row = self.player.row + d_row

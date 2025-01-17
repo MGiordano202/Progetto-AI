@@ -5,49 +5,53 @@ class Astar:
         self.grid = grid
 
     def find_path(self, start, goal):
-        open_set = []
-        heappush(open_set, (0, start))
+        if not self.grid.is_passable(*start) or not self.grid.is_passable(*goal):
+            print("Invalid start or goal start = {start}, goal = {goal}")
+            return None, []
+
+        block_destruction_cost = 2
+        open_heap = []
+        heappush(open_heap, (0, start))
+        open_set = {start}
+
         came_from = {}
         g_score = {start: 0}
         f_score = {start: self.heuristic(start, goal)}
-        destructible_blocks = set()
+        blocks_to_destroy= []
 
         while open_set:
-            __, current = heappop(open_set)
-            print(f"Esaminando nodo: {current}, Goal: {goal}")  # Debug
+            __, current = heappop(open_heap)
+            open_set.remove(current)
+            #print(f"Esaminando nodo: {current}, Goal: {goal}")  # Debug
 
             if current == goal:
-                path = []
-                while current in came_from:
-                    path.append(current)
-                    current = came_from[current]
-                return path[::-1], list(destructible_blocks)
+                path = self.reconstruct_path(came_from, current)
+                return path, blocks_to_destroy
 
             for neighbor in self.grid.get_neighbors(*current):
                 cell_type = self.grid.get_cell(*neighbor)
 
-                if cell_type == "W":
-                    continue
-
-                if cell_type == "0" or cell_type == "G":
-                    cost = 1
-                elif cell_type == "D":
-                    cost = 5
+                if cell_type == "D":
+                    tentative_g_score = g_score[current] + block_destruction_cost
+                    if neighbor not in blocks_to_destroy:
+                        blocks_to_destroy.append(neighbor) # Aggiungi il blocco alla lista
                 else:
+                    tentative_g_score = g_score[current] + 1
+
+                if not self.grid.is_passable(*neighbor) and cell_type != "D":
                     continue
 
-                tentative_g_score = g_score[current] + cost
-
-                if neighbor not in g_score or tentative_g_score < g_score[neighbor]:
+                if tentative_g_score < g_score.get(neighbor, float("inf")):
                     came_from[neighbor] = current
                     g_score[neighbor] = tentative_g_score
-                    f_score[neighbor] = tentative_g_score + self.heuristic(neighbor, goal)
+                    f_score[neighbor] = g_score[neighbor] + self.heuristic(neighbor, goal)
 
-                    if cell_type == "D":
-                        destructible_blocks.add(neighbor)
+                    if neighbor not in open_set:
+                        heappush(open_heap, (f_score[neighbor], neighbor))
+                        open_set.add(neighbor)
 
-                    heappush(open_set, (f_score[neighbor], neighbor))
-            print(f"Current: {current}, Open set: {open_set}, G score: {g_score}, F score: {f_score}")
+
+            #print(f"Current: {current}, Open set: {open_set}, G score: {g_score}, F score: {f_score}")
 
         print("No path found")
         return None, []
