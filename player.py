@@ -16,8 +16,11 @@ class Player:
         # Trova il percorso dalla posizione attuale (row, col) al goal
         path, blocks_to_destroy = pathfinder.find_path((self.row, self.col), goal)
 
-        if blocks_to_destroy:
-            target_block = blocks_to_destroy[0]
+        # Filtra i blocchi distruttibili essenziali
+        essential_blocks = self.filer_essential_blocks(blocks_to_destroy, path)
+
+        if essential_blocks:
+            target_block = essential_blocks[0]
             adjacent_positions = self.get_adjacent_positions(target_block[0], target_block[1], grid)
 
             # Controlla se il giocatore è già in una posizione adiacente
@@ -48,6 +51,14 @@ class Player:
 
         else:
             print("No valid path to goal!")
+
+    @staticmethod
+    def filer_essential_blocks(blocks_to_destroy, path):
+        essential_blocks = []
+        for block in blocks_to_destroy:
+            if block in path:
+                essential_blocks.append(block)
+        return essential_blocks
 
     @staticmethod
     def get_adjacent_positions(rows, cols, grid):

@@ -9,7 +9,7 @@ class Astar:
             print("Invalid start or goal start = {start}, goal = {goal}")
             return None, []
 
-        block_destruction_cost = 2
+        block_destruction_cost = 5
         open_heap = []
         heappush(open_heap, (0, start))
         open_set = {start}
