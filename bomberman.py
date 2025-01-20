@@ -1,11 +1,9 @@
 import pygame
-
-from bomb import Bomb
 from grid import Grid
 from player import Player
-from enemy import Enemy
 from game_elements import load_images
 from AI.a_star import Astar
+from AI.Genetic_Algorithm.genetic_algorithm import genetic_algorithm
 
 class BombermanGame:
     def __init__(self, rows, cols, cell_size):
@@ -14,7 +12,7 @@ class BombermanGame:
         self.cell_size = cell_size
         self.clock = pygame.time.Clock()
         self.running = True
-        self.manual_control = False  # Inizia in modalità manuale
+        self.manual_control = False  # Inizia in modalità automatica
         self.screen = pygame.display.set_mode((self.rows * self.cell_size, self.cols * self.cell_size))
         pygame.display.set_caption('Bomberman AI')
 
@@ -36,6 +34,15 @@ class BombermanGame:
 
         self.grid.set_cell(self.rows - 2,self.cols -2, "G")
         self.player_goal = (self.rows - 2,self.cols - 2)  # Obiettivo del giocatore
+
+        self.ga = genetic_algorithm(
+            grid = self.grid,
+            player_goal = self.player_goal,
+            population_size = 50,
+            generations = 100,
+            mutation_rate = 0.1,
+            tournament_size = 5
+        )
 
         # Esempio di muri (probabilmente da rimuovere)
     def add_walls(self):
@@ -60,7 +67,21 @@ class BombermanGame:
                 print("Aspettando la distruzione del blocco")
                 self.update_bombs()
                 return
-            self.player.move_towards_goal(self.grid, self.pathfinder, self.player_goal, self.bombs)
+
+            # A-Star
+            #self.player.move_towards_goal(self.grid, self.pathfinder, self.player_goal, self.bombs)
+
+            # Genetic Algorithm
+            best_individual = self.ga.run()
+            for step in best_individual.path:
+                row, col, place_bomb = step
+
+                if place_bomb:
+                    self.bombs.append(self.player.place_bomb(self.grid, self.bombs))
+                    continue
+                self.move_player(row - self.player.row, col - self.player.col)
+                self.update_bombs()
+                self.draw()
 
         # Gestione delle bombe
         self.update_bombs()

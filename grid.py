@@ -8,6 +8,10 @@ class Grid:
         self.cols = cols
         self.grid = [["0" for _ in range(cols)] for _ in range(rows)]
 
+    @property
+    def size(self):
+        return self.rows * self.cols
+
     def set_cell(self, rows, cols, value):
         self.grid[rows][cols] = value
 

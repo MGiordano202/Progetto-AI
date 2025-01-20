@@ -1,8 +1,9 @@
 import random
-from Operators.Selection.tournament_selection import tournament_selection
-from Operators.Crossover.single_point_crossover import single_point_crossover
-from Operators.Mutation.random_mutation import random_mutation
-from individual import Individual
+from AI.Genetic_Algorithm.Operators.Selection.tournament_selection import tournament_selection
+from AI.Genetic_Algorithm.Operators.Crossover.single_point_crossover import single_point_crossover
+from AI.Genetic_Algorithm.Operators.Mutation.random_mutation import random_mutation
+from AI.Genetic_Algorithm.individual import Individual
+
 def generate_initial_population(size, grid_size):
     """
     Genera una popolazione iniziale di individui in maniera casuale.
@@ -12,8 +13,13 @@ def generate_initial_population(size, grid_size):
     """
     population = []
     for _ in range(size):
-        path = [(random.randint(0, grid_size -1), random.randint(0, grid_size -1)) for _ in range(10)]
-        bombs_placed = [(random.randint(0, grid_size -1), random.randint(0, grid_size -1)) for _ in range(3)]
+        path = [(random.randint(0, grid_size -1), # random row
+                 random.randint(0, grid_size -1), # random col
+                 random.choice([True, False])) # random bomb
+                for _ in range(10)]
+        bombs_placed = [(random.randint(0, grid_size -1),
+                         random.randint(0, grid_size -1))
+                        for _ in range(3)]
         individual = Individual(path, bombs_placed)
         population.append(individual)
     return population

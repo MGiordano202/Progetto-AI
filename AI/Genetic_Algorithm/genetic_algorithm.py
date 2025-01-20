@@ -1,11 +1,24 @@
 import random
-from population import generate_initial_population
-from fitness import calculate_fitness
-from Operators.Selection.tournament_selection import tournament_selection
-from Operators.Crossover.single_point_crossover import single_point_crossover
-from Operators.Mutation.random_mutation import random_mutation
+from AI.Genetic_Algorithm.individual import Individual
+from AI.Genetic_Algorithm.population import generate_initial_population
+from AI.Genetic_Algorithm.fitness import calculate_fitness
+from AI.Genetic_Algorithm.Operators.Selection.tournament_selection import tournament_selection
+from AI.Genetic_Algorithm.Operators.Crossover.single_point_crossover import single_point_crossover
+from AI.Genetic_Algorithm.Operators.Mutation.random_mutation import random_mutation
 
 def genetic_algorithm(grid, player_goal, population_size, generations, mutation_rate, tournament_size):
+    """
+    Esegue l'algoritmo generico per trovare il miglior percorso per il giocatore
+
+    :param grid: Griglia di gioco
+    :param player_goal: Obiettivo del giocatore (in righe e colonne)
+    :param population_size: Dimensione della popolazione iniziale
+    :param generations: Numero di generazioni da eseguire.
+    :param mutation_rate: Probabilità di mutazione.
+    :param tournament_size: Numero di individui da selezionare nel torneo
+    :return: Il miglior individuo
+    """
+
     population = generate_initial_population(population_size, grid.size)
 
     for generation in range(generations):
@@ -38,9 +51,11 @@ def genetic_algorithm(grid, player_goal, population_size, generations, mutation_
 
             # Crossover
             child = single_point_crossover(parent1, parent2)
+            assert isinstance(child, Individual), "Il risultato del crossover non è un oggetto Individual"
 
             # Mutazione
             child = random_mutation(child, mutation_rate)
+            assert isinstance(child, Individual), "Il risultato della mutazione non è un oggetto Individual"
 
             new_population.append(child)
 
