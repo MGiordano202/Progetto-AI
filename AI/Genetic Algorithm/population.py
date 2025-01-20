@@ -1,6 +1,6 @@
 import random
 from individual import Individual
-
+###DA RIVEDERE
 class Population:
     def __init__(self, size, seq_length):
         self.size = size
