@@ -3,7 +3,7 @@ from grid import Grid
 from player import Player
 from game_elements import load_images
 from AI.a_star import Astar
-from AI.Genetic_Algorithm.genetic_algorithm import genetic_algorithm
+from AI.Genetic_Algorithm.genetic_algorithm import GeneticAlgorithm
 
 class BombermanGame:
     def __init__(self, rows, cols, cell_size):
@@ -35,7 +35,7 @@ class BombermanGame:
         self.grid.set_cell(self.rows - 2,self.cols -2, "G")
         self.player_goal = (self.rows - 2,self.cols - 2)  # Obiettivo del giocatore
 
-        self.ga = genetic_algorithm(
+        self.ga = GeneticAlgorithm(
             grid = self.grid,
             player_goal = self.player_goal,
             population_size = 50,
@@ -77,8 +77,11 @@ class BombermanGame:
                 row, col, place_bomb = step
 
                 if place_bomb:
-                    self.bombs.append(self.player.place_bomb(self.grid, self.bombs))
+                    new_bomb = self.player.place_bomb(self.grid, self.bombs)
+                    if new_bomb is not None:
+                        self.bombs.append(new_bomb)
                     continue
+
                 self.move_player(row - self.player.row, col - self.player.col)
                 self.update_bombs()
                 self.draw()
@@ -88,6 +91,9 @@ class BombermanGame:
 
     def update_bombs(self):
         for bomb in self.bombs[:]:
+            if bomb is None:
+                continue
+
             if bomb.has_exploded():
                 print(f"Bomba esplosa in posizione: ({bomb.row}, {bomb.col})")
                 bomb.explode(self.grid)
@@ -148,4 +154,4 @@ class BombermanGame:
             self.update()
             self.draw()
             self.grid.print_debug()
-            self.clock.tick(5)
+            self.clock.tick(60)

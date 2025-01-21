@@ -1,9 +1,8 @@
-import pygame
 import time
 
 
 class Bomb:
-    def __init__(self, row, col, timer=3):
+    def __init__(self, row, col, timer=0.5):
         self.row = row
         self.col = col
         self.timer = timer

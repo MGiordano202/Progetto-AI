@@ -6,59 +6,55 @@ from AI.Genetic_Algorithm.Operators.Selection.tournament_selection import tourna
 from AI.Genetic_Algorithm.Operators.Crossover.single_point_crossover import single_point_crossover
 from AI.Genetic_Algorithm.Operators.Mutation.random_mutation import random_mutation
 
-def genetic_algorithm(grid, player_goal, population_size, generations, mutation_rate, tournament_size):
-    """
-    Esegue l'algoritmo generico per trovare il miglior percorso per il giocatore
 
-    :param grid: Griglia di gioco
-    :param player_goal: Obiettivo del giocatore (in righe e colonne)
-    :param population_size: Dimensione della popolazione iniziale
-    :param generations: Numero di generazioni da eseguire.
-    :param mutation_rate: Probabilità di mutazione.
-    :param tournament_size: Numero di individui da selezionare nel torneo
-    :return: Il miglior individuo
-    """
+class GeneticAlgorithm:
+    def __init__(self, grid, player_goal, population_size, generations, mutation_rate, tournament_size):
+        self.grid = grid
+        self.player_goal = player_goal
+        self.population_size = population_size
+        self.generations = generations
+        self.mutation_rate = mutation_rate
+        self.tournament_size = tournament_size
+        self.population = []
 
-    population = generate_initial_population(population_size, grid.size)
+    def initialize_population(self):
+        """Genera la popolazione iniziale."""
+        self.population = generate_initial_population(self.population_size, self.grid.rows)
 
-    for generation in range(generations):
-        print(f"Generazione {generation + 1}")
+    def evaluate_fitness(self):
+        """Calcola il fitness per ogni individuo nella popolazione."""
+        for individual in self.population:
+            calculate_fitness(individual, self.grid, self.player_goal)
+        self.population.sort(key=lambda x: x.fitness, reverse=True)
 
-        # Calcola il fitness di ogni individuo
-        for individual in population:
-            calculate_fitness(individual, grid, player_goal)
-
-        # Ordina la popolazione in base alla fitness
-        population.sort(key=lambda x: x.fitness, reverse=True)
-        print(f"Fitness migliore: {population[0].fitness}")
-
-        # Condizione di terminazione
-        if population[0].fitness >= 1000:
-            print("Obiettivo raggiunto!")
-            break
-
-        # Genera la nuova generazione
+    def evolve(self):
+        """Evolve la popolazione per una generazione."""
         new_population = []
+        elitism_count = max(1, self.population_size // 10)
+        new_population.extend(self.population[:elitism_count])
 
-        elitism_count = max(1, population_size // 10) # Mantiene il 10% della popolazione migliore
-        new_population.extend(population[:elitism_count])
-
-        # Genera il resto della popolazione
-        while len(new_population) < population_size:
-            # Seleziona i genitori
-            parent1 = tournament_selection(population, tournament_size)
-            parent2 = tournament_selection(population, tournament_size)
-
-            # Crossover
+        while len(new_population) < self.population_size:
+            parent1 = tournament_selection(self.population, self.tournament_size)
+            parent2 = tournament_selection(self.population, self.tournament_size)
             child = single_point_crossover(parent1, parent2)
-            assert isinstance(child, Individual), "Il risultato del crossover non è un oggetto Individual"
-
-            # Mutazione
-            child = random_mutation(child, mutation_rate)
-            assert isinstance(child, Individual), "Il risultato della mutazione non è un oggetto Individual"
-
+            child = random_mutation(child, self.mutation_rate)
             new_population.append(child)
 
-        population = new_population
+        self.population = new_population
 
-    return population[0] # Restituisce il miglior individuo
+    def run(self):
+        """Esegue l'algoritmo genetico."""
+        self.initialize_population()
+
+        for generation in range(self.generations):
+            print(f"Generazione {generation + 1}")
+            self.evaluate_fitness()
+            print(f"Fitness migliore: {self.population[0].fitness}")
+
+            if self.population[0].fitness >= 1000:
+                print("Obiettivo raggiunto!")
+                break
+
+            self.evolve()
+
+        return self.population[0]
