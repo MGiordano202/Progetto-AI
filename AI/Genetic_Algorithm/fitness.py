@@ -1,29 +1,52 @@
-def calculate_fitness(individual, grid, player_goal):
+def calculate_fitness(individual, grid, player_start, player_goal):
     """
-        Calcola la fitness di un individuo.
-        individual: un individuo da valutare.
-        grid: la griglia di gioco.
-        player_goal: l'obiettivo del giocatore.
-        ritorna un valore fitness (più alto è meglio).
+    Calcola la fitness di un individuo.
+    :param individual: Individuo da valutare
+    :param grid: Griglia di gioco
+    :param player_start: Posizione iniziale del giocare
+    :param player_goal: Posizione dell'obiettivo
+    :return: valore fitness
     """
-    path = individual.path
+    current_position = player_start
     fitness = 0
+    destroyed_blocks = set()
 
-    for index, (row, col, place_bomb) in enumerate (path):
-        if not grid.is_passable(row, col): # Penalizza se la cella non è raggiungibile
+    for gene in individual.genome:
+        if gene == 'u':
+            new_position = (current_position[0] - 1, current_position[1])
+        elif gene == 'd':
+            new_position = (current_position[0] + 1, current_position[1])
+        elif gene == 'l':
+            new_position = (current_position[0], current_position[1] - 1)
+        elif gene == 'r':
+            new_position = (current_position[0], current_position[1] + 1)
+        elif gene == 'b':
+            affected_blocks = simulate_bomb_explosion(grid, *current_position)
+            for block in affected_blocks:
+                if grid.get_cell(*block) == "D" and block not in destroyed_blocks:
+                    fitness += 50
+                    destroyed_blocks.add(block)
+            continue
+        else:
+            continue
+
+        # Penalizza i movimenti fuori dalla griglia
+        if not (0 <= new_position[0] < grid.rows and 0 <= new_position[1] < grid.cols):
             fitness -= 100
             continue
 
-        # Premia se il giocare si avvicina all'obiettivo
-        goal_distance = abs(player_goal[0] - row) + abs(player_goal[1] - col)
+        # Penalizza i movimenti in celle non passabili
+        if not grid.is_passable(*new_position):
+            fitness -= 100
+            continue
+
+        # Premia avvicinamento all'obiettivo
+        goal_distance = abs(player_goal[0] - new_position[0]) + abs(player_goal[1] - new_position[1])
         fitness += 100 / (1 + goal_distance)
 
-        # Premia se il giocatore distrugge blocchi che lo ostacolano
-        if place_bomb:
-            fitness += 50
+        current_position = new_position
 
-    # Bonus se l'obiettivo è raggiunto
-    if path[-1][:2] == player_goal:
+    if current_position == player_goal:
         fitness += 1000
 
     individual.fitness = fitness
