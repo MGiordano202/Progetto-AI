@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89a154d6-1bc2-494b-9e36-2de99f1d532c" name="Changes" comment="21th: new function that simulates the affected cells during an explosion added in bomb.py">
-      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/Operators/Crossover/single_point_crossover.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/Operators/Crossover/single_point_crossover.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/Operators/Mutation/random_mutation.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/Operators/Mutation/random_mutation.py" afterDir="false" />
+    <list default="true" id="89a154d6-1bc2-494b-9e36-2de99f1d532c" name="Changes" comment="22th: adapted crossover and mutation to the new Individual">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/fitness.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/fitness.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/genetic_algorithm.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/genetic_algorithm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/individual.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/individual.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/population.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/population.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bomb.py" beforeDir="false" afterPath="$PROJECT_DIR$/bomb.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bomberman.py" beforeDir="false" afterPath="$PROJECT_DIR$/bomberman.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +40,9 @@
     &quot;accountId&quot;: &quot;8bbf824f-3ab8-410b-a19a-85c6cb2fa383&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -44,30 +52,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Notification.DisplayName-DoNotAsk-WindowsDefender&quot;: &quot;Microsoft Defender may affect IDE&quot;,
-    &quot;Notification.DoNotAsk-WindowsDefender&quot;: &quot;true&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/giord/PycharmProjects/Progetto-AI/img&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Notification.DisplayName-DoNotAsk-WindowsDefender": "Microsoft Defender may affect IDE",
+    "Notification.DoNotAsk-WindowsDefender": "true",
+    "Python.main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/giord/PycharmProjects/Progetto-AI/img",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "aDefault",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;PLAIN_TEXT&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "PLAIN_TEXT"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\giord\PycharmProjects\Progetto-AI\img" />
@@ -144,7 +153,7 @@
       <workItem from="1737192472870" duration="7438000" />
       <workItem from="1737313236820" duration="26244000" />
       <workItem from="1737486217678" duration="1803000" />
-      <workItem from="1737535798730" duration="9953000" />
+      <workItem from="1737535798730" duration="15635000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -314,7 +323,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737554817568</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="22th: adapted crossover and mutation to the new Individual">
+      <option name="closed" value="true" />
+      <created>1737555739243</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1737555739243</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -353,9 +370,10 @@
     <MESSAGE value="19th: adapted population on the new individual" />
     <MESSAGE value="20th: new implementation of fitness.py" />
     <MESSAGE value="21th: new function that simulates the affected cells during an explosion added in bomb.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="21th: new function that simulates the affected cells during an explosion added in bomb.py" />
+    <MESSAGE value="22th: adapted crossover and mutation to the new Individual" />
+    <option name="LAST_COMMIT_MESSAGE" value="22th: adapted crossover and mutation to the new Individual" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Progetto_AI$main.coverage" NAME="main Coverage Results" MODIFIED="1737488016322" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Progetto_AI$main.coverage" NAME="main Coverage Results" MODIFIED="1737562653310" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

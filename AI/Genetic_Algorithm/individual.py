@@ -1,7 +1,4 @@
-import random
-
 from AI.Genetic_Algorithm.fitness import calculate_fitness
-
 
 class Individual:
     def __init__(self, genome, grid_size):

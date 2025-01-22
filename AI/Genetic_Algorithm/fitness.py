@@ -1,3 +1,4 @@
+from bomb import simulate_bomb_explosion
 def calculate_fitness(individual, grid, player_start, player_goal):
     """
     Calcola la fitness di un individuo.
