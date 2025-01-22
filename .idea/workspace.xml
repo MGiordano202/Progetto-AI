@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89a154d6-1bc2-494b-9e36-2de99f1d532c" name="Changes" comment="17th: Debugging the GA 2">
+    <list default="true" id="89a154d6-1bc2-494b-9e36-2de99f1d532c" name="Changes" comment="18th: Defining a new type of individual as a string of [u, d, l, r, b]">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/individual.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/individual.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/population.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/population.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +144,7 @@
       <workItem from="1737192472870" duration="7438000" />
       <workItem from="1737313236820" duration="26244000" />
       <workItem from="1737486217678" duration="1803000" />
-      <workItem from="1737535798730" duration="3363000" />
+      <workItem from="1737535798730" duration="4764000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -283,7 +282,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737462398729</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="18th: Defining a new type of individual as a string of [u, d, l, r, b]">
+      <option name="closed" value="true" />
+      <created>1737540288354</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1737540288354</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -318,7 +325,8 @@
     <MESSAGE value="15th: completed the GA, next to do is testing" />
     <MESSAGE value="16th: Debugging the GA" />
     <MESSAGE value="17th: Debugging the GA 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="17th: Debugging the GA 2" />
+    <MESSAGE value="18th: Defining a new type of individual as a string of [u, d, l, r, b]" />
+    <option name="LAST_COMMIT_MESSAGE" value="18th: Defining a new type of individual as a string of [u, d, l, r, b]" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Progetto_AI$main.coverage" NAME="main Coverage Results" MODIFIED="1737488016322" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
