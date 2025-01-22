@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89a154d6-1bc2-494b-9e36-2de99f1d532c" name="Changes" comment="20th: new implementation of fitness.py">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bomb.py" beforeDir="false" afterPath="$PROJECT_DIR$/bomb.py" afterDir="false" />
+    <list default="true" id="89a154d6-1bc2-494b-9e36-2de99f1d532c" name="Changes" comment="21th: new function that simulates the affected cells during an explosion added in bomb.py">
+      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/Operators/Crossover/single_point_crossover.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/Operators/Crossover/single_point_crossover.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/Operators/Mutation/random_mutation.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/Operators/Mutation/random_mutation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +144,7 @@
       <workItem from="1737192472870" duration="7438000" />
       <workItem from="1737313236820" duration="26244000" />
       <workItem from="1737486217678" duration="1803000" />
-      <workItem from="1737535798730" duration="9197000" />
+      <workItem from="1737535798730" duration="9953000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -306,7 +306,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737551585643</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="21th: new function that simulates the affected cells during an explosion added in bomb.py">
+      <option name="closed" value="true" />
+      <created>1737554817568</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1737554817568</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -344,7 +352,8 @@
     <MESSAGE value="18th: Defining a new type of individual as a string of [u, d, l, r, b]" />
     <MESSAGE value="19th: adapted population on the new individual" />
     <MESSAGE value="20th: new implementation of fitness.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="20th: new implementation of fitness.py" />
+    <MESSAGE value="21th: new function that simulates the affected cells during an explosion added in bomb.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="21th: new function that simulates the affected cells during an explosion added in bomb.py" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Progetto_AI$main.coverage" NAME="main Coverage Results" MODIFIED="1737488016322" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

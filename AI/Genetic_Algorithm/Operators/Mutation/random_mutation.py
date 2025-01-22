@@ -10,16 +10,11 @@ def random_mutation(individual, mutation_rate):
     :param mutation_rate: Probabilità di mutazione.
     :return: Individuo mutato.
     """
-    if not isinstance(individual, Individual):
-        raise TypeError("L'oggetto passato non è un'istanza di Individual")
+    genome = list(individual.genome)
+    directions = ['u', 'd', 'l', 'r', 'b']
+    for i in range(len(genome)):
+        if random.random() < mutation_rate:
+            genome[i] = random.choice(directions)
 
-    if random.random() < mutation_rate:
-        mutation_index = random.randint(0, len(individual.path) - 1)
-        # Cambia la posizione a un valore casuale valido
-        individual.path[mutation_index] = (
-            random.randint(0, 9),
-            random.randint(0, 9),
-            random.choice([True, False])
-            )
-
+    individual.genome = ''.join(genome)
     return individual
