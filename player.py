@@ -79,6 +79,7 @@ class Player:
             return bomb
         else:
             print(f"Cannot place bomb at ({self.row}, {self.col}) - Cell is not empty.")
+            return None
 
     def check_bomb_status(self, grid):
         """Check if the bomb has exploded and allow the player to move again."""

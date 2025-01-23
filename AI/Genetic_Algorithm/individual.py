@@ -4,10 +4,10 @@ class Individual:
     def __init__(self, genome, grid_size):
         """
         Inizializza un nuovo individuo.
-        :param genome:  Stringa di carattreri ( 'u', 'd', 'l', 'r', 'b')
+        :param genome:  Stringa di carattreri ( 'u', 'd', 'l', 'r')
         :param grid_size: Dimensione della griglia
         """
-        self.path = genome
+        self.genome = genome
         self.grid_size = grid_size
         self.fitness = 0
 

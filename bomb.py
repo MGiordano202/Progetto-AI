@@ -7,7 +7,8 @@ class Bomb:
         self.col = col
         self.timer = timer
         self.start_time = time.time()
-        self.exploded = False  # Per tracciare lo stato della bomba
+        self.exploded = False # Per tracciare lo stato della bomba
+        self.radius = 2  # Raggio dell'esplosione
 
     def has_exploded(self):
         """Verifica se la bomba è esplosa in base al timer."""
@@ -19,12 +20,12 @@ class Bomb:
             return
 
         print(f"Bomba esplode in posizione ({self.row}, {self.col})!")
-        radius = 2
+
         grid.set_cell(self.row, self.col, "0")  # Rimuove la bomba dalla cella
 
         # Gestione delle celle coinvolte nell'esplosione
         for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:  # Direzioni: sopra, sotto, sinistra, destra
-            for i in range(1, radius + 1):
+            for i in range(1, self.radius + 1):
                 r, c = self.row + dr * i, self.col + dc * i
                 if 0 <= r < grid.rows and 0 <= c < grid.cols:
                     cell = grid.get_cell(r, c)
@@ -47,28 +48,27 @@ class Bomb:
             return True
         return False
 
-def simulate_bomb_explosion(self, grid, radius = 2):
-    """
-    Simula le celle coinvolte nell'esplosione, senza modificare a griglia.
-    :param grid: Griglia di gioco.
-    :param radius: Raggio dell'esplosione.
-    :return: Lista di celle coinvolte nell'esplosione.
-    """
-    affected_cell = []
+    def simulate_bomb_explosion(self, grid):
+        """
+        Simula le celle coinvolte nell'esplosione, senza modificare a griglia.
+        :param grid: Griglia di gioco.
+        :return: Lista di celle coinvolte nell'esplosione.
+        """
+        affected_cell = []
 
-    # Direzioni dell'esplosione: up, down, left, right
-    directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
-    for dr, dc in directions:
-        for i in range(1, radius + 1):
-            r, c = self.row + dr * i, self.col + dc * i
+     # Direzioni dell'esplosione: up, down, left, right
+        directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+        for dr, dc in directions:
+            for i in range(1, self.radius + 1):
+                r, c = self.row + dr * i, self.col + dc * i
 
-            if 0 <= r < grid.rows and 0 <= c < grid.cols:
-                cell_type = grid.get_cell(r, c)
-                affected_cell.append((r, c))
+                if 0 <= r < grid.rows and 0 <= c < grid.cols:
+                    cell_type = grid.get_cell(r, c)
+                    affected_cell.append((r, c))
 
-                if cell_type in ["W", "G"]:
-                    break
+                    if cell_type in ["W", "G"]:
+                        break
 
-    return affected_cell
+        return affected_cell
 
 

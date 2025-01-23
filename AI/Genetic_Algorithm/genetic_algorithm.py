@@ -16,11 +16,15 @@ class GeneticAlgorithm:
 
     def initialize_population(self):
         """Genera la popolazione iniziale."""
-        self.population = generate_initial_population(self.population_size, 100, self.grid.size)
+        self.population = generate_initial_population(self.population_size, 500, self.grid.size)
 
     def evaluate_fitness(self):
         """Calcola il fitness per ogni individuo nella popolazione."""
-        for individual in self.population:
+        for i, individual in enumerate(self.population):
+            # Debug per verificare il genome prima della valutazione
+            if not isinstance(individual.genome, list):
+                print(f"Errore: Genome di Individuo {i} non è una lista! Valore={individual.genome}")
+
             calculate_fitness(individual, self.grid, self.player_start, self.player_goal)
         self.population.sort(key=lambda x: x.fitness, reverse=True)
 
@@ -30,6 +34,13 @@ class GeneticAlgorithm:
 
         for generation in range(self.generations):
             print(f"Generazione {generation + 1}")
+
+            # Debug: verifica l'integrità della popolazione
+            for i, individual in enumerate(self.population):
+                if not isinstance(individual.genome, list):
+                    print(
+                        f"Errore: Genome di Individuo {i} non è una lista! Tipo={type(individual.genome)}, Valore={individual.genome}")
+
             self.evaluate_fitness()
             best_fitness = self.population[0].fitness
 

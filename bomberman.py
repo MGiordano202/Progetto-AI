@@ -88,7 +88,7 @@ class BombermanGame:
             else:
                 # Calcola il percorso con l'algoritmo genetico
                 best_individual = self.ga.run()
-                self.best_path = best_individual.path
+                self.best_path = best_individual.genome
                 self.current_step = 0
 
                 if not self.best_path:
@@ -112,9 +112,13 @@ class BombermanGame:
         elif action == 'r':
             self.move_player(0, 1)
         elif action == 'b':
-            self.bombs.append(self.player.place_bomb(self.grid, self.bombs))
+            bomb = self.player.place_bomb(self.grid, self.bombs)
+            if bomb is not None:
+                    self.bombs.append(bomb)
 
     def update_bombs(self):
+        self.bombs = [bomb for bomb in self.bombs if bomb is not None]
+
         for bomb in self.bombs[:]:
             if bomb is None:
                 continue
@@ -147,7 +151,9 @@ class BombermanGame:
                     elif event.key == pygame.K_d:
                         self.move_player(0, 1)
                     elif event.key == pygame.K_SPACE:  # Spazio per piazzare una bomba
-                        self.bombs.append(self.player.place_bomb(self.grid, self.bombs))
+                        bomb = self.player.place_bomb(self.grid, self.bombs)
+                        if bomb is not None:
+                            self.bombs.append(bomb)
 
 
     def move_player(self, d_row, d_col):
