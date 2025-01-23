@@ -31,21 +31,31 @@ class GeneticAlgorithm:
     def run(self):
         """Esegue l'algoritmo genetico."""
         self.initialize_population()
+        # Aggiungi un controllo per il miglioramento della fitness
+        no_improvement_generations = 0
+        best_fitness_last_generation = None
 
         for generation in range(self.generations):
             print(f"Generazione {generation + 1}")
 
-            # Debug: verifica l'integrità della popolazione
-            for i, individual in enumerate(self.population):
-                if not isinstance(individual.genome, list):
-                    print(
-                        f"Errore: Genome di Individuo {i} non è una lista! Tipo={type(individual.genome)}, Valore={individual.genome}")
-
             self.evaluate_fitness()
             best_fitness = self.population[0].fitness
+            print(f"Fitness migliore: {best_fitness}")
 
-            if best_fitness >= 1000:
+            # Controlla se la fitness è stabile
+            if best_fitness_last_generation is not None and abs(best_fitness - best_fitness_last_generation) < 0.01:
+                no_improvement_generations += 1
+            else:
+                no_improvement_generations = 0
+
+            best_fitness_last_generation = best_fitness
+
+            # Criterio di terminazione
+            if best_fitness >= 10000:  # Raggiungimento obiettivo
                 print("Obiettivo raggiunto!")
+                break
+            if no_improvement_generations >= 7:  # Fitness stabile per 10 generazioni
+                print("Fitness stabile, terminazione.")
                 break
 
             self.population = next_generation(self.population, self.mutation_rate, self.tournament_size)

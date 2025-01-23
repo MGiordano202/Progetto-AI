@@ -39,7 +39,7 @@ def calculate_fitness(individual, grid, player_start, player_goal):
 
         # Penalizza i movimenti fuori dalla griglia
         if not (0 <= new_position[0] < grid.rows and 0 <= new_position[1] < grid.cols):
-            fitness -= 50
+            fitness -= 10
             continue
 
         # Controlla la cella nella direzione del movimento
@@ -49,17 +49,17 @@ def calculate_fitness(individual, grid, player_start, player_goal):
             affected_blocks = bomb.simulate_bomb_explosion(grid)
             for block in affected_blocks:
                 if grid.get_cell(*block) == "D" and block not in destroyed_blocks:
-                    fitness += 50  # Premio per ogni blocco distrutto
+                    fitness += 10  # Premio per ogni blocco distrutto
                     destroyed_blocks.add(block)
 
         # Penalizza i movimenti in celle non passabili
         if not grid.is_passable(*new_position):
-            fitness -= 50
+            fitness -= 10
             continue
 
         # Penalizza movimenti ripetuti nella stessa cella
         if new_position in visited_positions:
-            fitness -= 10  # Penalità per cicli
+            fitness -= 5  # Penalità per cicli
         else:
             visited_positions.add(new_position)
 
@@ -72,11 +72,17 @@ def calculate_fitness(individual, grid, player_start, player_goal):
     # Premio per il completamento rapido del percorso
     if current_position == player_goal:
         fitness += 1000  # Grande premio per aver raggiunto il goal
-        fitness += 500 / steps_taken  # Premia un completamento rapido
+        fitness += 1000 / steps_taken  # Premia un completamento rapido
+
+    fitness -=  steps_taken * 2  # Penalizza i percorsi troppo lunghi
 
     # Penalità per percorsi troppo lunghi senza raggiungere il goal
-    if steps_taken > 200:
-        fitness -= (steps_taken - 200) * 5
+    if steps_taken > 50:
+        fitness -= (steps_taken - 20) * 5
+
+    # Penalità per bombe inutili
+    if len(destroyed_blocks) == 0:
+        fitness -= 20
 
     # Debug per verificare la fitness calcolata
     print(f"[DEBUG] Fitness calcolata per l'individuo: {fitness}")
