@@ -1,6 +1,4 @@
-from pygame.examples import grid
 import random
-
 
 class Grid:
     def __init__(self, rows, cols):
@@ -30,7 +28,7 @@ class Grid:
             print(f"Posizione non valida: ({rows}, {cols})")
             return False
         cell = self.grid[rows][cols]
-        result = cell in ["0", "P", "G"]
+        result = cell in ["0", "P", "G", "D"]
 
         return result
 

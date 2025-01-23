@@ -2,11 +2,12 @@ import time
 
 
 class Bomb:
-    def __init__(self, row, col, timer=0.5):
+    def __init__(self, row, col, timer=2):
         self.row = row
         self.col = col
         self.timer = timer
         self.start_time = time.time()
+        self.waiting_for_bomb = False # Per controllare se il giocatore sta aspettando l'esplosione
         self.exploded = False # Per tracciare lo stato della bomba
         self.radius = 2  # Raggio dell'esplosione
 

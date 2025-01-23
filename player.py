@@ -1,3 +1,5 @@
+import pygame.time
+
 from bomb import Bomb
 
 
@@ -70,7 +72,7 @@ class Player:
         return adjacent_positions
 
     def place_bomb(self, grid, bomb_list):
-        if grid.get_cell(self.row, self.col) == "P":  # Ensure the cell is empty before placing
+        if grid.get_cell(self.row, self.col) == "P":
             print(f"Bomba piazzata in posizione: ({self.row}, {self.col})")
             bomb = Bomb(self.row, self.col)
             grid.set_cell(self.row, self.col, "B")
@@ -88,6 +90,8 @@ class Player:
             if current_cell != "B":
                 print("Bomba esplosa! Player può muoversi di nuovo.")
                 self.waiting_for_bomb = False
+            else:
+                return
 
     def move_to(self, next_step, grid):
         if not isinstance(next_step, tuple) or len(next_step) != 2:

@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89a154d6-1bc2-494b-9e36-2de99f1d532c" name="Changes" comment="23th: debugging the ga">
+    <list default="true" id="89a154d6-1bc2-494b-9e36-2de99f1d532c" name="Changes" comment="24th: fixed the ga">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/Operators/Crossover/single_point_crossover.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/Operators/Crossover/single_point_crossover.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/Operators/Mutation/random_mutation.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/Operators/Mutation/random_mutation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/fitness.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/fitness.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/genetic_algorithm.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/genetic_algorithm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/individual.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/individual.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/population.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/population.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bomb.py" beforeDir="false" afterPath="$PROJECT_DIR$/bomb.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bomberman.py" beforeDir="false" afterPath="$PROJECT_DIR$/bomberman.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/grid.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -156,7 +152,7 @@
       <workItem from="1737192472870" duration="7438000" />
       <workItem from="1737313236820" duration="26244000" />
       <workItem from="1737486217678" duration="1803000" />
-      <workItem from="1737535798730" duration="26748000" />
+      <workItem from="1737535798730" duration="41324000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -342,7 +338,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737562795156</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="24th: fixed the ga">
+      <option name="closed" value="true" />
+      <created>1737630906059</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1737630906059</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -383,9 +387,10 @@
     <MESSAGE value="21th: new function that simulates the affected cells during an explosion added in bomb.py" />
     <MESSAGE value="22th: adapted crossover and mutation to the new Individual" />
     <MESSAGE value="23th: debugging the ga" />
-    <option name="LAST_COMMIT_MESSAGE" value="23th: debugging the ga" />
+    <MESSAGE value="24th: fixed the ga" />
+    <option name="LAST_COMMIT_MESSAGE" value="24th: fixed the ga" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Progetto_AI$main.coverage" NAME="main Coverage Results" MODIFIED="1737630094333" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Progetto_AI$main.coverage" NAME="main Coverage Results" MODIFIED="1737651774210" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

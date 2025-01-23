@@ -12,7 +12,8 @@ class BombermanGame:
         self.cell_size = cell_size
         self.clock = pygame.time.Clock()
         self.running = True
-        self.manual_control = False  # Modalità di controllo (auto o manual)
+        self.manual_control = False # Modalità di controllo (auto o manual)
+        self.waiting_for_bomb = False  # Indica se il giocatore è in attesa dell'esplosione di una bomba
         self.screen = pygame.display.set_mode((self.rows * self.cell_size, self.cols * self.cell_size))
         pygame.display.set_caption('Bomberman AI')
 
@@ -41,7 +42,7 @@ class BombermanGame:
             player_goal = self.player_goal,
             population_size = 50,
             generations = 100,
-            mutation_rate = 0.1,
+            mutation_rate = 5,
             tournament_size = 5
         )
 
@@ -71,14 +72,18 @@ class BombermanGame:
             self.running = False
             return
 
+
+
         if not self.manual_control:
-            if any(bomb.row == self.player.row and bomb.col == self.player.col for bomb in self.bombs):
-                print("Aspettando la distruzione del blocco")
-                self.update_bombs()
+            if self.waiting_for_bomb:  # Controlla se il giocatore è in attesa
+                print("Aspettando l'esplosione della bomba...")
+                self.update_bombs()  # Aggiorna lo stato delle bombe
+                if not any(not bomb.has_exploded() for bomb in self.bombs):  # Controlla se tutte le bombe sono esplose
+                    self.waiting_for_bomb = False  # Sblocca il giocatore
                 return
 
             # A-Star
-            #self.player.move_towards_goal(self.grid, self.pathfinder, self.player_goal, self.bombs)
+            # self.player.move_towards_goal(self.grid, self.pathfinder, self.player_goal, self.bombs)
 
             # Genetic Algorithm
             if self.best_path or self.current_step < len(self.best_path):
@@ -101,8 +106,12 @@ class BombermanGame:
 
     def execute_action(self, action):
         """
-        Esegue un'azione (movimento o piazzamento di una bomba).
+        Esegue un'azione.
         """
+        if self.waiting_for_bomb:
+            print("Il giocatore sta aspettando che la bomba esploda.")
+            return
+
         if action == 'u':
             self.move_player(-1, 0)
         elif action == 'd':
@@ -111,10 +120,6 @@ class BombermanGame:
             self.move_player(0, -1)
         elif action == 'r':
             self.move_player(0, 1)
-        elif action == 'b':
-            bomb = self.player.place_bomb(self.grid, self.bombs)
-            if bomb is not None:
-                    self.bombs.append(bomb)
 
     def update_bombs(self):
         self.bombs = [bomb for bomb in self.bombs if bomb is not None]
@@ -123,10 +128,14 @@ class BombermanGame:
             if bomb is None:
                 continue
 
-            if bomb.has_exploded():
+            if bomb.update(self.grid):
                 print(f"Bomba esplosa in posizione: ({bomb.row}, {bomb.col})")
-                bomb.explode(self.grid)
                 self.bombs.remove(bomb)
+
+        # Controlla se ci sono ancora bombe attive
+        if not any(not bomb.has_exploded() for bomb in self.bombs):
+            self.waiting_for_bomb = False
+
 
 
     def handle_events(self):
@@ -157,11 +166,21 @@ class BombermanGame:
 
 
     def move_player(self, d_row, d_col):
+        if self.waiting_for_bomb:
+            return
+
         new_row = self.player.row + d_row
         new_col = self.player.col + d_col
 
-        if (0 <= new_row < self.rows and 0 <= new_col < self.cols and
-                self.grid.is_passable(new_row, new_col)):
+        if 0 <= new_row < self.rows and 0 <= new_col < self.cols and self.grid.is_passable(new_row, new_col):
+            target_cell = self.grid.get_cell(new_row, new_col)
+
+            if target_cell == "D":
+                self.player.place_bomb(self.grid, self.bombs)
+                self.waiting_for_bomb = True
+                return
+
+
             # Aggiorna la posizione del giocatore
             if any(bomb.row == self.player.row and bomb.col == self.player.col for bomb in self.bombs):
                 # Mantieni visivamente la bomba
@@ -192,4 +211,4 @@ class BombermanGame:
                 print(f"Passo attuale: {self.current_step}/{len(self.best_path)}")
 
             self.grid.print_debug()
-            self.clock.tick(60)
+            self.clock.tick(10)
