@@ -14,9 +14,9 @@ def generate_all_paths(grid, start, goal):
         (0, 1): 'r'    # Destra
     }
     all_paths = []
+    #max_depth = grid.rows * grid.cols  # Limite di profondità
 
-
-    def dfs(current, path, visited, depth):
+    def dfs(current, path, visited):
 
         if current == goal:  # Se raggiungiamo l'obiettivo, aggiungiamo il path
             all_paths.append(path[:])
@@ -36,12 +36,12 @@ def generate_all_paths(grid, start, goal):
                 path.append(move)  # Aggiungi al path
 
                 # Chiamata ricorsiva
-                dfs(next_position, path, visited, depth + 1)
+                dfs(next_position, path, visited)
 
                 # Backtracking: rimuovi la posizione dal path e da visited
                 path.pop()
                 if next_position in visited:  # Controllo per sicurezza
                     visited.remove(next_position)
 
-    dfs(start, [], {start}, 0)
+    dfs(start, [], {start})
     return all_paths

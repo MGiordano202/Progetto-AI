@@ -12,10 +12,10 @@ def single_point_crossover(parent1, parent2):
         raise TypeError("I genitori devono essere oggetti di tipo 'Individual'")
 
     genome1, genome2 = parent1.genome, parent2.genome
-    crossover_point = random.randint(1, min(len(genome1), len(genome2)) - 1)
+    crossover_point = len(genome1) // 2
 
     child1_genome = genome1[:crossover_point] + genome2[crossover_point:]
-    child2_genome = genome1[crossover_point:] + genome2[:crossover_point]
+    child2_genome = genome2[:crossover_point] + genome1[crossover_point:]
 
     child1 = Individual(child1_genome)
     child2 = Individual(child2_genome)

@@ -46,13 +46,13 @@ def calculate_fitness(individual, grid, player_start, player_goal):
 
             for block in affected_blocks:
                 if grid.get_cell(*block) == "D" and block not in destroyed_blocks:
-                    fitness += 2  # Premio per ogni blocco distrutto
+                    #fitness += 1  # Premio per ogni blocco distrutto
                     destroyed_blocks.add(block)
                     total_destroyed_blocks += 1  # Incrementa il numero di blocchi distrutti
 
         # Penalizza i movimenti in celle non passabili
         if not grid.is_passable(*new_position):
-            fitness -= 3
+            fitness -= 10
             continue
 
         # Penalizza movimenti ripetuti nella stessa cella
