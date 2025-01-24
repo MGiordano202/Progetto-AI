@@ -2,27 +2,17 @@ from bomb import Bomb
 def calculate_fitness(individual, grid, player_start, player_goal):
     """
     Calcola la fitness di un individuo.
-    :param individual: Individuo da valutare
-    :param grid: Griglia di gioco
-    :param player_start: Posizione iniziale del giocare
-    :param player_goal: Posizione dell'obiettivo
-    :return: valore fitness
     """
-
-    # Debug per verificare il tipo di genome
-    if not hasattr(individual, 'genome'):
-        raise AttributeError("L'individuo non ha un attributo 'genome'")
-    if not isinstance(individual.genome, (list, str)):
-        raise TypeError(f"'genome' deve essere una lista o una stringa, trovato: {type(individual.genome)}")
-
-    # Debug per verificare il genoma iniziale
-    print(f"[DEBUG] Genome dell'individuo: {individual.genome}")
-
     current_position = player_start
     fitness = 0
     destroyed_blocks = set()
     visited_positions = set()
     steps_taken = 0
+    total_destroyed_blocks = 0  # Conta quanti blocchi vengono distrutti
+
+    # Soglia massima per i blocchi distrutti prima di penalizzare
+    max_blocks_without_penalty = 10
+    penalty_per_extra_block = 20  # Penalità per ogni blocco oltre la soglia
 
     for gene in individual.genome:
         steps_taken += 1
@@ -39,7 +29,7 @@ def calculate_fitness(individual, grid, player_start, player_goal):
 
         # Penalizza i movimenti fuori dalla griglia
         if not (0 <= new_position[0] < grid.rows and 0 <= new_position[1] < grid.cols):
-            fitness -= 10
+            fitness -= 50
             continue
 
         # Controlla la cella nella direzione del movimento
@@ -51,6 +41,7 @@ def calculate_fitness(individual, grid, player_start, player_goal):
                 if grid.get_cell(*block) == "D" and block not in destroyed_blocks:
                     fitness += 10  # Premio per ogni blocco distrutto
                     destroyed_blocks.add(block)
+                    total_destroyed_blocks += 1  # Incrementa il numero di blocchi distrutti
 
         # Penalizza i movimenti in celle non passabili
         if not grid.is_passable(*new_position):
@@ -65,27 +56,26 @@ def calculate_fitness(individual, grid, player_start, player_goal):
 
         # Premia avvicinamento all'obiettivo
         goal_distance = abs(player_goal[0] - new_position[0]) + abs(player_goal[1] - new_position[1])
-        fitness += 100 / (1 + goal_distance)
+        fitness += 50 / (1 + goal_distance)
 
         current_position = new_position
+
+    # Penalità per blocchi distrutti oltre la soglia
+    if total_destroyed_blocks > max_blocks_without_penalty:
+        excess_blocks = total_destroyed_blocks - max_blocks_without_penalty
+        fitness -= excess_blocks * penalty_per_extra_block
 
     # Premio per il completamento rapido del percorso
     if current_position == player_goal:
         fitness += 1000  # Grande premio per aver raggiunto il goal
-        fitness += 1000 / steps_taken  # Premia un completamento rapido
-
-    fitness -=  steps_taken * 2  # Penalizza i percorsi troppo lunghi
+        fitness += 500 / steps_taken  # Premia un completamento rapido
 
     # Penalità per percorsi troppo lunghi senza raggiungere il goal
-    if steps_taken > 50:
-        fitness -= (steps_taken - 20) * 5
-
-    # Penalità per bombe inutili
-    if len(destroyed_blocks) == 0:
-        fitness -= 20
+    if steps_taken > 70:
+        fitness -= (steps_taken - 200) * 5
 
     # Debug per verificare la fitness calcolata
-    print(f"[DEBUG] Fitness calcolata per l'individuo: {fitness}")
+    print(f"[DEBUG] Fitness calcolata per l'individuo: {fitness}, Blocchi distrutti: {total_destroyed_blocks}")
 
     individual.fitness = fitness
     return fitness

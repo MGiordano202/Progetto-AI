@@ -1,14 +1,13 @@
 from AI.Genetic_Algorithm.fitness import calculate_fitness
 
 class Individual:
-    def __init__(self, genome, grid_size):
+    def __init__(self, genome):
         """
         Inizializza un nuovo individuo.
         :param genome:  Stringa di carattreri ( 'u', 'd', 'l', 'r')
-        :param grid_size: Dimensione della griglia
+
         """
         self.genome = genome
-        self.grid_size = grid_size
         self.fitness = 0
 
     def calculate_fitness(self, grid, player_start, player_goal):

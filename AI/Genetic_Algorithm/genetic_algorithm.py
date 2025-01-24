@@ -1,6 +1,6 @@
-from AI.Genetic_Algorithm.population import generate_initial_population
+from AI.Genetic_Algorithm.population.population import generate_initial_population
 from AI.Genetic_Algorithm.fitness import calculate_fitness
-from AI.Genetic_Algorithm.population import next_generation
+from AI.Genetic_Algorithm.population.population import next_generation
 
 
 class GeneticAlgorithm:
@@ -51,7 +51,7 @@ class GeneticAlgorithm:
             best_fitness_last_generation = best_fitness
 
             # Criterio di terminazione
-            if best_fitness >= 10000:  # Raggiungimento obiettivo
+            if best_fitness >= 8000:  # Raggiungimento obiettivo
                 print("Obiettivo raggiunto!")
                 break
             if no_improvement_generations >= 7:  # Fitness stabile per 10 generazioni

@@ -40,8 +40,8 @@ class BombermanGame:
             grid = self.grid,
             player_start = (self.player.row, self.player.col),
             player_goal = self.player_goal,
-            population_size = 500,
-            generations = 1000,
+            population_size = 200,
+            generations = 200,
             mutation_rate = 1,
             tournament_size = 5
         )

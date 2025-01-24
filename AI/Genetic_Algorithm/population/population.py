@@ -1,25 +1,28 @@
 import random
 from AI.Genetic_Algorithm.individual import Individual
+from AI.Genetic_Algorithm.population.dfs import generate_all_paths
 from AI.Genetic_Algorithm.Operators.Selection.tournament_selection import tournament_selection
 from AI.Genetic_Algorithm.Operators.Crossover.single_point_crossover import single_point_crossover
 from AI.Genetic_Algorithm.Operators.Mutation.random_mutation import random_mutation
-def generate_initial_population(size, genome_length, grid_size):
+def generate_initial_population(grid, start, goal, population_size):
     """
-    Genera una popolazione iniziale.
-    :param size: Dimensione della popolazione
-    :param genome_length: Lunghezza del genoma (numero di mosse)
-    :param grid_size: Dimensione della griglia
-    :return: Lista di individui
+    Genera la popolazione iniziale di individui utilizzando l'algoritmo
+    Depth-First Search (DFS) per generare i genomi.
+    :param grid: Griglia di gioco
+    :param start: posizione iniziale (riga, colonna)
+    :param goal: posizione obiettivo (riga, colonna)
+    :param population_size: Numero di individui nella popolazione
+    :return: Lista di oggetti Individual
     """
-    directions = ['u', 'd', 'l', 'r']
+    paths = generate_all_paths(grid, start, goal)
+
+    if not paths: # Nessun percorso trovato
+        raise ValueError("Nessun percorso valido trovato tra start e goal")
+
     population = []
-
-    for i in range(size):
-        genome = [random.choice(directions) for _ in range(genome_length)]
-        individual = Individual(genome = genome, grid_size = grid_size)
-
-        print(f"Individuo {i}: Tipo={type(individual)}, Genome={getattr(individual, 'genome', None)}")
-
+    for _ in range(population_size):
+        path = random.choice(paths)
+        individual = Individual(genome = path)
         population.append(individual)
 
     return population
