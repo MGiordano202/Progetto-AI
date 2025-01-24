@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89a154d6-1bc2-494b-9e36-2de99f1d532c" name="Changes" comment="25th: adjusting the fitness function">
-      <change afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/population/dfs.py" afterDir="false" />
+    <list default="true" id="89a154d6-1bc2-494b-9e36-2de99f1d532c" name="Changes" comment="26th: changing the individual, again... this time each initial individual it's a generated path from dfs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/fitness.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/fitness.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/genetic_algorithm.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/genetic_algorithm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/individual.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/individual.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/population.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/population/population.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bomberman.py" beforeDir="false" afterPath="$PROJECT_DIR$/bomberman.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/Operators/Crossover/single_point_crossover.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/Operators/Crossover/single_point_crossover.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/Operators/Mutation/random_mutation.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/Operators/Mutation/random_mutation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/population/population.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/population/population.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +152,7 @@
       <workItem from="1737313236820" duration="26244000" />
       <workItem from="1737486217678" duration="1803000" />
       <workItem from="1737535798730" duration="41696000" />
-      <workItem from="1737654233918" duration="9037000" />
+      <workItem from="1737654233918" duration="10642000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -365,7 +362,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737658444477</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="26th: changing the individual, again... this time each initial individual it's a generated path from dfs">
+      <option name="closed" value="true" />
+      <created>1737710086714</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1737710086714</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -383,7 +388,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Second Commit: definition of the classes for the game" />
     <MESSAGE value="Third commit: added images and a try-run" />
     <MESSAGE value="Fifth Commit: adjustment on the movevents of the player and the enemy, now they can move in the grid almost correctly. Enemy now is delayed and moves slower, TO DO: Review player and start with the algorithm" />
     <MESSAGE value="Sixth commit: addedd class bomb" />
@@ -408,7 +412,8 @@
     <MESSAGE value="24th: fixed the ga" />
     <MESSAGE value="24th: changed the bomb placement in the GA TODO: adjust the fitness function" />
     <MESSAGE value="25th: adjusting the fitness function" />
-    <option name="LAST_COMMIT_MESSAGE" value="25th: adjusting the fitness function" />
+    <MESSAGE value="26th: changing the individual, again... this time each initial individual it's a generated path from dfs" />
+    <option name="LAST_COMMIT_MESSAGE" value="26th: changing the individual, again... this time each initial individual it's a generated path from dfs" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Progetto_AI$main.coverage" NAME="main Coverage Results" MODIFIED="1737660892919" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
