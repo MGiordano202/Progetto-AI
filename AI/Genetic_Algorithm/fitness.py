@@ -18,7 +18,7 @@ def calculate_fitness(individual, grid, player_start, player_goal):
 
     # Soglia massima per i blocchi distrutti prima di penalizzare
     max_blocks_without_penalty = 10
-    penalty_per_extra_block = 50  # Penalità per ogni blocco oltre la soglia
+    penalty_per_extra_block = 15
 
     for step, move in enumerate(individual.genome):
         steps_taken += 1
@@ -35,7 +35,7 @@ def calculate_fitness(individual, grid, player_start, player_goal):
 
         # Penalizza i movimenti fuori dalla griglia
         if not (0 <= new_position[0] < grid.rows and 0 <= new_position[1] < grid.cols):
-            fitness -= 50
+            fitness -= 5
             continue
 
         # Controlla la cella nella direzione del movimento
@@ -46,24 +46,24 @@ def calculate_fitness(individual, grid, player_start, player_goal):
 
             for block in affected_blocks:
                 if grid.get_cell(*block) == "D" and block not in destroyed_blocks:
-                    fitness += 20  # Premio per ogni blocco distrutto
+                    fitness += 2  # Premio per ogni blocco distrutto
                     destroyed_blocks.add(block)
                     total_destroyed_blocks += 1  # Incrementa il numero di blocchi distrutti
 
         # Penalizza i movimenti in celle non passabili
         if not grid.is_passable(*new_position):
-            fitness -= 30
+            fitness -= 3
             continue
 
         # Penalizza movimenti ripetuti nella stessa cella
         if new_position in visited_positions:
-            fitness -= 50  # Penalità per cicli
+            fitness -= 5  # Penalità per cicli
         else:
             visited_positions.add(new_position)
 
         # Premia avvicinamento all'obiettivo
         goal_distance = abs(player_goal[0] - new_position[0]) + abs(player_goal[1] - new_position[1])
-        fitness += 50 / (1 + goal_distance)
+        fitness += 10 / (1 + goal_distance)
 
         current_position = new_position
 
@@ -75,7 +75,7 @@ def calculate_fitness(individual, grid, player_start, player_goal):
     # Premio per il completamento rapido del percorso
     if current_position == player_goal:
         fitness += 1000  # Grande premio per aver raggiunto il goal
-        fitness += 500 / steps_taken  # Premia un completamento rapido
+        fitness += 5 / steps_taken  # Premia un completamento rapido
 
     # Penalità per percorsi troppo lunghi senza raggiungere il goal
     if steps_taken > max_steps_without_goal:

@@ -7,6 +7,16 @@ def random_mutation(individual, mutation_rate):
     :param mutation_rate: Probabilità di mutazione.
     :return: Individuo mutato.
     """
-    for i in range(len(individual.genome)):
+    if not individual:  # Controllo su un valore None
+        raise ValueError("L'individuo passato a mutation è None.")
+
+    mutated_genome = []
+    for gene in individual.genome:
         if random.random() < mutation_rate:
-            individual.genome[i] = random.choice(['u', 'd', 'l', 'r'])
+            mutated_genome.append(random.choice(['u', 'd', 'l', 'r']))  # Nuovo gene casuale
+        else:
+            mutated_genome.append(gene)  # Gene invariato
+
+    # Assicurati che il nuovo individuo sia valido
+    mutated_individual = Individual(genome=mutated_genome)
+    return mutated_individual

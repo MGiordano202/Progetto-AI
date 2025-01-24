@@ -15,7 +15,7 @@ def single_point_crossover(parent1, parent2):
     crossover_point = random.randint(1, min(len(genome1), len(genome2)) - 1)
 
     child1_genome = genome1[:crossover_point] + genome2[crossover_point:]
-    child2_genome = genome2[:crossover_point] + genome1[crossover_point:]
+    child2_genome = genome1[crossover_point:] + genome2[:crossover_point]
 
     child1 = Individual(child1_genome)
     child2 = Individual(child2_genome)

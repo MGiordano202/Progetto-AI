@@ -16,7 +16,7 @@ class GeneticAlgorithm:
 
     def initialize_population(self):
         """Genera la popolazione iniziale."""
-        self.population = generate_initial_population(self.population_size, 500, self.grid.size)
+        self.population = generate_initial_population(self.grid, self.player_start, self.player_goal, self.population_size)
 
     def evaluate_fitness(self):
         """Calcola il fitness per ogni individuo nella popolazione."""
@@ -51,13 +51,17 @@ class GeneticAlgorithm:
             best_fitness_last_generation = best_fitness
 
             # Criterio di terminazione
-            if best_fitness >= 8000:  # Raggiungimento obiettivo
+            if best_fitness >= 2000:  # Raggiungimento obiettivo
                 print("Obiettivo raggiunto!")
                 break
             if no_improvement_generations >= 7:  # Fitness stabile per 10 generazioni
                 print("Fitness stabile, terminazione.")
                 break
 
-            self.population = next_generation(self.population, self.mutation_rate, self.tournament_size)
+            self.population = next_generation(
+                self.population,
+                self.mutation_rate,
+                self.tournament_size
+            )
 
         return self.population[0]

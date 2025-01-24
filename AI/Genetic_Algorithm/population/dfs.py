@@ -6,32 +6,42 @@ def generate_all_paths(grid, start, goal):
     :param goal: posizione di arrivo (riga e colonna)
     :return: Lista di percorsi, ogni percorsi è una lista di mosse
     """
-    directions = {'u': (-1, 0), 'd': (1, 0), 'l': (0, -1), 'r': (0, 1)}
+    # Direzioni valide e relative lettere di movimento
+    directions = {
+        (-1, 0): 'u',  # Su
+        (1, 0): 'd',   # Giù
+        (0, -1): 'l',  # Sinistra
+        (0, 1): 'r'    # Destra
+    }
     all_paths = []
-    max_depth = grid.size()
-    def dfs(current_position, path, visited, depth):
-        if depth > max_depth:
+
+
+    def dfs(current, path, visited, depth):
+
+        if current == goal:  # Se raggiungiamo l'obiettivo, aggiungiamo il path
+            all_paths.append(path[:])
             return
 
-        if current_position == goal:
-            all_paths.append(path)
-            return
+        for direction, move in directions.items():
+            next_position = (current[0] + direction[0], current[1] + direction[1])
 
-        for move, (dr, dc) in directions.items():
-            next_position = (current_position[0] + dr, current_position[1] + dc)
+            # Controlla se la prossima posizione è valida e non ancora visitata
+            if (
+                    0 <= next_position[0] < grid.rows and
+                    0 <= next_position[1] < grid.cols and
+                    grid.is_passable(next_position[0], next_position[1])
+                    and next_position not in visited
+            ):
+                visited.add(next_position)  # Aggiungi a visited
+                path.append(move)  # Aggiungi al path
 
-            if not grid.is_passable(*next_position):
-                continue
+                # Chiamata ricorsiva
+                dfs(next_position, path, visited, depth + 1)
 
-            if grid.is_passable(*next_position):
-                visited.add(next_position)
-                path.appenf(move)
-
-                dfs(next_position, path, visited, depth +1)
-
+                # Backtracking: rimuovi la posizione dal path e da visited
                 path.pop()
-                visited.remove(next_position)
-
+                if next_position in visited:  # Controllo per sicurezza
+                    visited.remove(next_position)
 
     dfs(start, [], {start}, 0)
     return all_paths

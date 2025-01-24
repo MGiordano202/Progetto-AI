@@ -86,15 +86,16 @@ class BombermanGame:
             # self.player.move_towards_goal(self.grid, self.pathfinder, self.player_goal, self.bombs)
 
             # Genetic Algorithm
-            if self.best_path or self.current_step < len(self.best_path):
+            if self.current_step < len(self.best_path):
                 action = self.best_path[self.current_step]
                 self.execute_action(action)
                 self.current_step += 1
             else:
                 # Calcola il percorso con l'algoritmo genetico
                 best_individual = self.ga.run()
-                self.best_path = best_individual.genome
-                self.current_step = 0
+                if best_individual and best_individual.genome:
+                    self.best_path = best_individual.genome
+                    self.current_step = 0
 
                 if not self.best_path:
                     print("Nessun percorso trovato.")
