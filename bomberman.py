@@ -40,9 +40,9 @@ class BombermanGame:
             grid = self.grid,
             player_start = (self.player.row, self.player.col),
             player_goal = self.player_goal,
-            population_size = 50,
-            generations = 500,
-            mutation_rate = 0.5,
+            population_size = 100,
+            generations = 300,
+            mutation_rate = 5,
             tournament_size = 10
         )
 
@@ -83,7 +83,7 @@ class BombermanGame:
                 return
 
             # A-Star
-            # self.player.move_towards_goal(self.grid, self.pathfinder, self.player_goal, self.bombs)
+            #self.player.move_towards_goal(self.grid, self.pathfinder, self.player_goal, self.bombs)
 
             # Genetic Algorithm
             if self.current_step < len(self.best_path):
@@ -107,20 +107,22 @@ class BombermanGame:
 
     def execute_action(self, action):
         """
-        Esegue un'azione.
+        Esegue un'azione specificata dall'algoritmo genetico.
+        L'azione è una tupla (nuova_riga, nuova_colonna) che rappresenta la prossima posizione.
         """
         if self.waiting_for_bomb:
             print("Il giocatore sta aspettando che la bomba esploda.")
             return
 
-        if action == 'u':
-            self.move_player(-1, 0)
-        elif action == 'd':
-            self.move_player(1, 0)
-        elif action == 'l':
-            self.move_player(0, -1)
-        elif action == 'r':
-            self.move_player(0, 1)
+        # Calcola lo spostamento necessario per raggiungere la nuova posizione
+        new_row, new_col = action
+        d_row = new_row - self.player.row
+        d_col = new_col - self.player.col
+
+        print(f"Eseguendo azione: spostamento verso ({new_row}, {new_col}) con d_row={d_row}, d_col={d_col}")  # Debug
+
+        # Verifica se il movimento è valido
+        self.move_player(d_row, d_col)
 
     def update_bombs(self):
         self.bombs = [bomb for bomb in self.bombs if bomb is not None]

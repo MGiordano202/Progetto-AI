@@ -1,13 +1,15 @@
 from bomb import Bomb
+
 def calculate_fitness(individual, grid, player_start, player_goal):
     """
-    Calcola la fitness di un individuo.
+    Calcola la fitness di un individuo basato su una lista di coordinate.
     :param individual: L'individuo da valutare
     :param grid: La griglia di gioco
     :param player_start: La posizione di partenza del giocatore
     :param player_goal: L'obiettivo del giocatore
     :return: Fitness dell'individuo
     """
+    # Inizializzazione
     current_position = player_start
     fitness = 0
     destroyed_blocks = set()
@@ -20,35 +22,28 @@ def calculate_fitness(individual, grid, player_start, player_goal):
     max_blocks_without_penalty = 7
     penalty_per_extra_block = 15
 
-    for step, move in enumerate(individual.genome):
+    for step, new_position in enumerate(individual.genome):
         steps_taken += 1
-        if move == 'u':
-            new_position = (current_position[0] - 1, current_position[1])
-        elif move == 'd':
-            new_position = (current_position[0] + 1, current_position[1])
-        elif move == 'l':
-            new_position = (current_position[0], current_position[1] - 1)
-        elif move == 'r':
-            new_position = (current_position[0], current_position[1] + 1)
-        else:
-            continue
 
         # Penalizza i movimenti fuori dalla griglia
         if not (0 <= new_position[0] < grid.rows and 0 <= new_position[1] < grid.cols):
             fitness -= 3
             continue
 
-        # Controlla la cella nella direzione del movimento
-        if grid.get_cell(*new_position) == "D":
-            # Simula una bomba nella posizione attuale
-            bomb = Bomb(*current_position)
-            affected_blocks = bomb.simulate_bomb_explosion(grid)
+        # Controlla se il passaggio da current_position a new_position è valido
+        if abs(current_position[0] - new_position[0]) + abs(current_position[1] - new_position[1]) > 1:
+            fitness -= 5  # Penalizza movimenti non consecutivi
+            continue
 
+        # Controlla la cella nella nuova posizione
+        if grid.get_cell(*new_position) == "D":
+            bomb = Bomb(*current_position)
+            affected_blocks = bomb.simulate_bomb_explosion(grid) # Simula l'esplosione della bomba
             for block in affected_blocks:
                 if grid.get_cell(*block) == "D" and block not in destroyed_blocks:
-                    #fitness += 1  # Premio per ogni blocco distrutto
+                    fitness += 3  # Premio per ogni blocco distrutto
                     destroyed_blocks.add(block)
-                    total_destroyed_blocks += 1  # Incrementa il numero di blocchi distrutti
+                    total_destroyed_blocks += 1
 
         # Penalizza i movimenti in celle non passabili
         if not grid.is_passable(*new_position):
@@ -65,6 +60,7 @@ def calculate_fitness(individual, grid, player_start, player_goal):
         goal_distance = abs(player_goal[0] - new_position[0]) + abs(player_goal[1] - new_position[1])
         fitness += 10 / (1 + goal_distance)
 
+        # Aggiorna la posizione corrente
         current_position = new_position
 
     # Penalità per blocchi distrutti oltre la soglia

@@ -1,9 +1,11 @@
 import random
+
+from AI.Genetic_Algorithm.Operators.Crossover.best_segment_crossover import best_segment_crossover
+from AI.Genetic_Algorithm.Operators.Mutation.localized_mutation import localized_mutation
+from AI.Genetic_Algorithm.Operators.Selection.tournament_selection import tournament_selection
 from AI.Genetic_Algorithm.individual import Individual
 from AI.Genetic_Algorithm.population.dfs import generate_all_paths
-from AI.Genetic_Algorithm.Operators.Selection.tournament_selection import tournament_selection
-from AI.Genetic_Algorithm.Operators.Crossover.single_point_crossover import single_point_crossover
-from AI.Genetic_Algorithm.Operators.Mutation.random_mutation import random_mutation
+
 def generate_initial_population(grid, start, goal, population_size):
     """
     Genera la popolazione iniziale di individui utilizzando l'algoritmo
@@ -16,56 +18,62 @@ def generate_initial_population(grid, start, goal, population_size):
     """
     paths = generate_all_paths(grid, start, goal)
 
-    if not paths: # Nessun percorso trovato
+    if not paths:  # Nessun percorso trovato
         raise ValueError("Nessun percorso valido trovato tra start e goal")
 
     population = []
     for _ in range(population_size):
         path = random.choice(paths)
-        individual = Individual(genome = path)
+
+        # Controlla che tutte le posizioni siano tuple valide
+        if not all(isinstance(pos, tuple) and len(pos) == 2 for pos in path):
+            raise ValueError(f"Percorso non valido: {path}")
+
+        individual = Individual(genome=path)
         population.append(individual)
 
     return population
 
-def next_generation(population, mutation_rate, tournament_size):
+
+def next_generation(population, mutation_rate, tournament_size, grid, goal):
     """
     Crea la prossima generazione di individui.
     :param population: lista di individui (oggetti Individual)
     :param mutation_rate: Probabilità di mutazione per ogni gene.
-    :param tournament_size: Numero di individui scelti per il torneo di selezione
-    :return: nuova popolazione
+    :param tournament_size: Numero di individui scelti per il torneo di selezione.
+    :param grid: Griglia di gioco.
+    :param goal: Posizione dell'obiettivo (tuple).
+    :return: nuova popolazione.
     """
     new_population = []
 
-    # Elitismo
-    elite_count = max(1, len(population) // 30) # 30% della popolazione
-    sorted_popuation = sorted(population, key=lambda x: x.fitness, reverse=True)
-    elites = sorted_popuation[:elite_count]
-
+    # Elitismo: Manteniamo una percentuale dei migliori individui
+    elite_count = max(1, len(population) // 20)  # Manteniamo almeno il 5% dei migliori
+    sorted_population = sorted(population, key=lambda x: x.fitness, reverse=True)
+    elites = sorted_population[:elite_count]
     new_population.extend(elites)
 
     # Genera il resto della popolazione
     while len(new_population) < len(population):
         parent1 = tournament_selection(population, tournament_size)
         parent2 = tournament_selection(population, tournament_size)
-        #print(f"Selezione: Tipo={type(parent1)}, Genome={parent1.genome}, Lunghezza={len(parent1.genome)}")
-        #print(f"Selezione: Tipo={type(parent2)}, Genome={parent2.genome}, Lunghezza={len(parent2.genome)}")
 
         # Assicurati che i genitori siano diversi
         while parent1 == parent2:
             parent2 = tournament_selection(population, tournament_size)
 
-        child1, child2 = single_point_crossover(parent1, parent2)
-        #print(f"Crossover: Nuovo individuo={child1}, Genome={child1.genome}, Lunghezza={len(child1.genome)}")
-        #print(f"Crossover: Nuovo individuo={child2}, Genome={child2.genome}, Lunghezza={len(child1.genome)}")
-        mutated_child1 = random_mutation(child1, mutation_rate)
-        mutated_child2 = random_mutation(child2, mutation_rate)
-        #print(f"Mutazione: Genome dopo mutazione={mutated_child1.genome}, Lunghezza={len(mutated_child1.genome)}")
-        #print(f"Mutazione: Genome dopo mutazione={mutated_child2.genome}, Lunghezza={len(mutated_child2.genome)}")
+        # Crossover ibrido basato sui segmenti migliori
+        child1, child2 = best_segment_crossover(parent1, parent2, goal)
+
+        # Mutazione localizzata
+        mutated_child1 = localized_mutation(child1, mutation_rate, grid)
+        mutated_child2 = localized_mutation(child2, mutation_rate, grid)
+
+        # Aggiungi i figli mutati alla nuova popolazione
         new_population.append(mutated_child1)
         new_population.append(mutated_child2)
 
-    # Rimuovi eventuali individui in eccesso
-    #new_population = new_population[:len(population)]
+    # Limita la popolazione alla dimensione originale
+    new_population = new_population[:len(population)]
 
     return new_population

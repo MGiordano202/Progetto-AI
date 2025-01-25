@@ -51,7 +51,7 @@ class Astar:
                         open_set.add(neighbor)
 
 
-            #print(f"Current: {current}, Open set: {open_set}, G score: {g_score}, F score: {f_score}")
+            print(f"Current: {current}, Open set: {open_set}, G score: {g_score}, F score: {f_score}")
 
         print("No path found")
         return None, []
