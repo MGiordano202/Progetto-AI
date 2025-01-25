@@ -56,7 +56,7 @@ class Grid:
         if self.grid[rows][cols] == "0": #cella libera
             return 1
         elif self.grid[rows][cols] == "D": #cella distruttibile
-            return 2
+            return 5
         elif self.grid[rows][cols] == "G":  # Goal
             return 1
         return float("inf")
@@ -80,7 +80,7 @@ class Grid:
         # Aggiunge blocchi distruttibili casualmente
         for r in range(1, self.rows - 1):
             for c in range(1, self.cols - 1):
-                if self.grid[r][c] == "0" and random.random() < 0.5:  # 4% di probabilità di blocco distruttibile
+                if self.grid[r][c] == "0" and random.random() < 0.5:  # 5% di probabilità di blocco distruttibile
                     self.grid[r][c] = "D"
 
         self.clear_initial_areas()
@@ -89,10 +89,7 @@ class Grid:
 
     def clear_initial_areas(self):
         """Libera le aree iniziali per il giocatore e i nemici."""
-        initial_positions = [(1, 1), (1, 2), (2, 1),
-                             (self.rows - 1, self.cols - 1),
-                             (self.rows - 1, self.cols - 2),
-                             (self.rows - 2, self.cols - 1)]
+        initial_positions = [(1, 1), (1, 2), (2, 1)]
         for r, c in initial_positions:
             self.grid[r][c] = "0"
 

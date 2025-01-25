@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89a154d6-1bc2-494b-9e36-2de99f1d532c" name="Changes" comment="28th: adjusted fitness function, and genetic_algorithm.py, ora taglia un genoma a perfetta metà e scambia le due parti, così potrebbe essere meglio">
+    <list default="true" id="89a154d6-1bc2-494b-9e36-2de99f1d532c" name="Changes" comment="29th: adjusting, probabilmente il motivo per cui l'algoritmo genera path corti è che la ricerca in profondità che &quot;fallisce&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/Operators/Crossover/single_point_crossover.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/Operators/Crossover/single_point_crossover.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/fitness.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/fitness.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/genetic_algorithm.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/genetic_algorithm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/population/dfs.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/population/dfs.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/population/population.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/population/population.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bomb.py" beforeDir="false" afterPath="$PROJECT_DIR$/bomb.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bomberman.py" beforeDir="false" afterPath="$PROJECT_DIR$/bomberman.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/grid.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,6 +41,9 @@
     &quot;accountId&quot;: &quot;8bbf824f-3ab8-410b-a19a-85c6cb2fa383&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/AI/Genetic_Algorithm/population/dfs.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -53,31 +56,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Notification.DisplayName-DoNotAsk-WindowsDefender": "Microsoft Defender may affect IDE",
-    "Notification.DoNotAsk-WindowsDefender": "true",
-    "Python.main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/giord/PycharmProjects/Progetto-AI/img",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "aDefault",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Notification.DisplayName-DoNotAsk-WindowsDefender&quot;: &quot;Microsoft Defender may affect IDE&quot;,
+    &quot;Notification.DoNotAsk-WindowsDefender&quot;: &quot;true&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/giord/PycharmProjects/Progetto-AI/img&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "PLAIN_TEXT"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;PLAIN_TEXT&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\giord\PycharmProjects\Progetto-AI\img" />
@@ -156,7 +159,8 @@
       <workItem from="1737313236820" duration="26244000" />
       <workItem from="1737486217678" duration="1803000" />
       <workItem from="1737535798730" duration="41696000" />
-      <workItem from="1737654233918" duration="28256000" />
+      <workItem from="1737654233918" duration="28374000" />
+      <workItem from="1737798281492" duration="3806000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -398,7 +402,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737718590130</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="29th: adjusting, probabilmente il motivo per cui l'algoritmo genera path corti è che la ricerca in profondità che &quot;fallisce&quot;">
+      <option name="closed" value="true" />
+      <created>1737735541273</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1737735541273</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -416,7 +428,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="7th: changed on the grid plyaer as P, enemy as E, bomb as B explosion as exp" />
     <MESSAGE value="8th: Implemented A* pathfinding algorithm and automated player movement in BombermanGame" />
     <MESSAGE value="9th:  Updated `generate_maze` method in `Grid` class to set the goal cell to &quot;G&quot;.&#10;- Added comments to exclude portions of code.&#10;- Implemented `generate_bomberman_map` method to set the goal cell to &quot;G&quot;.&#10;- Provided example implementation of `print_grid` method for visualizing the grid.&#10;- Ensured player movement is updated correctly in the game loop.&#10;- Added `BombermanGame` class with methods to initialize the game, update player and enemy positions, and draw the grid." />
     <MESSAGE value="10th: Fixed the movement, now the algorithm works, next TODO: Enemies and Bombs logic implementation" />
@@ -441,9 +452,10 @@
     <MESSAGE value="27th: adapted the crossover, the mutation and the new generations" />
     <MESSAGE value="27th: adapted the fitness function" />
     <MESSAGE value="28th: adjusted fitness function, and genetic_algorithm.py, ora taglia un genoma a perfetta metà e scambia le due parti, così potrebbe essere meglio" />
-    <option name="LAST_COMMIT_MESSAGE" value="28th: adjusted fitness function, and genetic_algorithm.py, ora taglia un genoma a perfetta metà e scambia le due parti, così potrebbe essere meglio" />
+    <MESSAGE value="29th: adjusting, probabilmente il motivo per cui l'algoritmo genera path corti è che la ricerca in profondità che &quot;fallisce&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="29th: adjusting, probabilmente il motivo per cui l'algoritmo genera path corti è che la ricerca in profondità che &quot;fallisce&quot;" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Progetto_AI$main.coverage" NAME="main Coverage Results" MODIFIED="1737735458624" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Progetto_AI$main.coverage" NAME="main Coverage Results" MODIFIED="1737803078471" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

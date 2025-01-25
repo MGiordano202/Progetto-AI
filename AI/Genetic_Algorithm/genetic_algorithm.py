@@ -51,12 +51,12 @@ class GeneticAlgorithm:
             best_fitness_last_generation = best_fitness
 
             # Criterio di terminazione
-            if best_fitness >= 1060:  # Raggiungimento obiettivo
+            if best_fitness >= 1035:  # Raggiungimento obiettivo
                 print("Obiettivo raggiunto!")
                 break
-            if no_improvement_generations >= 10:  # Fitness stabile per 10 generazioni
-                print("Fitness stabile, terminazione.")
-                break
+            #if no_improvement_generations >= 10:  # Fitness stabile per 10 generazioni
+                #print("Fitness stabile, terminazione.")
+               # break
 
             self.population = next_generation(
                 self.population,

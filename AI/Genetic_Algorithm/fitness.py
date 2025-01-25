@@ -17,7 +17,7 @@ def calculate_fitness(individual, grid, player_start, player_goal):
     max_steps_without_goal = 100  # Numero massimo di passi senza raggiungere il goal
 
     # Soglia massima per i blocchi distrutti prima di penalizzare
-    max_blocks_without_penalty = 10
+    max_blocks_without_penalty = 7
     penalty_per_extra_block = 15
 
     for step, move in enumerate(individual.genome):
@@ -35,7 +35,7 @@ def calculate_fitness(individual, grid, player_start, player_goal):
 
         # Penalizza i movimenti fuori dalla griglia
         if not (0 <= new_position[0] < grid.rows and 0 <= new_position[1] < grid.cols):
-            fitness -= 5
+            fitness -= 3
             continue
 
         # Controlla la cella nella direzione del movimento
@@ -52,12 +52,12 @@ def calculate_fitness(individual, grid, player_start, player_goal):
 
         # Penalizza i movimenti in celle non passabili
         if not grid.is_passable(*new_position):
-            fitness -= 10
+            fitness -= 5
             continue
 
         # Penalizza movimenti ripetuti nella stessa cella
         if new_position in visited_positions:
-            fitness -= 5  # Penalità per cicli
+            fitness -= 2  # Penalità per cicli
         else:
             visited_positions.add(new_position)
 

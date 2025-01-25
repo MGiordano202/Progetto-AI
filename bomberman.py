@@ -40,10 +40,10 @@ class BombermanGame:
             grid = self.grid,
             player_start = (self.player.row, self.player.col),
             player_goal = self.player_goal,
-            population_size = 200,
-            generations = 100,
+            population_size = 50,
+            generations = 500,
             mutation_rate = 0.5,
-            tournament_size = 5
+            tournament_size = 10
         )
 
         self.best_path = []
@@ -212,4 +212,4 @@ class BombermanGame:
                 print(f"Passo attuale: {self.current_step}/{len(self.best_path)}")
 
             self.grid.print_debug()
-            self.clock.tick(10)
+            self.clock.tick(5)

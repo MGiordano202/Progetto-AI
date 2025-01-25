@@ -36,8 +36,7 @@ class Bomb:
                         print(f"Distrutto blocco distruttibile in ({r}, {c})")
                         grid.set_cell(r, c, "0")
                     elif cell == "P":  # Se il giocatore è nella zona di esplosione
-                        print(f"Giocatore colpito in posizione ({r}, {c})!")
-                        grid.set_cell(r, c, "0")
+                        grid.set_cell(r, c, "P")
                     else:  # Celle vuote o altre
                         grid.set_cell(r, c, "0")
         self.exploded = True
@@ -67,7 +66,7 @@ class Bomb:
                     cell_type = grid.get_cell(r, c)
                     affected_cell.append((r, c))
 
-                    if cell_type in ["W", "G"]:
+                    if cell_type in ["W", "G", "P"]:
                         break
 
         return affected_cell
