@@ -82,7 +82,8 @@ class GeneticAlgorithm:
                 self.mutation_rate,
                 self.tournament_size,
                 self.grid,
-                self.player_goal
+                self.player_goal,
+                self.player_start
             )
 
         # Restituisci il miglior individuo finale

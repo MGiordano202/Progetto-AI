@@ -33,7 +33,7 @@ def localized_mutation(individual, mutation_rate, grid):
             ]
 
             # Se ci sono mosse valide, scegli una a caso
-            if valid_moves:
+            if valid_moves and i != 0 and i != len(mutated_genome) - 1:
                 mutated_genome[i] = random.choice(valid_moves)
 
     return Individual(genome=mutated_genome)

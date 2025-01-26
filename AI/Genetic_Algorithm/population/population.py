@@ -35,7 +35,7 @@ def generate_initial_population(grid, start, goal, population_size):
     return population
 
 
-def next_generation(population, mutation_rate, tournament_size, grid, goal):
+def next_generation(population, mutation_rate, tournament_size, grid, goal, start):
     """
     Crea la prossima generazione di individui.
     :param population: lista di individui (oggetti Individual)
@@ -43,6 +43,7 @@ def next_generation(population, mutation_rate, tournament_size, grid, goal):
     :param tournament_size: Numero di individui scelti per il torneo di selezione.
     :param grid: Griglia di gioco.
     :param goal: Posizione dell'obiettivo (tuple).
+    :param start: Posizione iniziale (tuple).
     :return: nuova popolazione.
     """
     new_population = []
@@ -63,7 +64,7 @@ def next_generation(population, mutation_rate, tournament_size, grid, goal):
             parent2 = tournament_selection(population, tournament_size)
 
         # Crossover ibrido basato sui segmenti migliori
-        child1, child2 = best_segment_crossover(parent1, parent2, goal)
+        child1, child2 = best_segment_crossover(parent1, parent2, goal, start, grid)
         print(f"[DEBUG] Crossover genitori: {parent1.genome} x {parent2.genome} -> Figli: {child1.genome}, {child2.genome}")
 
         # Mutazione localizzata
