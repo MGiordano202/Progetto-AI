@@ -48,7 +48,7 @@ def next_generation(population, mutation_rate, tournament_size, grid, goal):
     new_population = []
 
     # Elitismo: Manteniamo una percentuale dei migliori individui
-    elite_count = max(1, len(population) // 20)  # Manteniamo almeno il 5% dei migliori
+    elite_count = int(0.1 * len(population))  # Manteniamo almeno il 10% dei migliori
     sorted_population = sorted(population, key=lambda x: x.fitness, reverse=True)
     elites = sorted_population[:elite_count]
     new_population.extend(elites)
@@ -64,6 +64,7 @@ def next_generation(population, mutation_rate, tournament_size, grid, goal):
 
         # Crossover ibrido basato sui segmenti migliori
         child1, child2 = best_segment_crossover(parent1, parent2, goal)
+        print(f"[DEBUG] Crossover genitori: {parent1.genome} x {parent2.genome} -> Figli: {child1.genome}, {child2.genome}")
 
         # Mutazione localizzata
         mutated_child1 = localized_mutation(child1, mutation_rate, grid)

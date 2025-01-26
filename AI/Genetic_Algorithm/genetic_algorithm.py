@@ -72,9 +72,9 @@ class GeneticAlgorithm:
                 break
 
             # Criterio di terminazione: fitness stabile
-            if no_improvement_generations >= 10:
-                print("Fitness stabile, terminazione anticipata.")
-                break
+            #if no_improvement_generations >= 10:
+                #print("Fitness stabile, terminazione anticipata.")
+                #break
 
             # Genera la nuova generazione
             self.population = next_generation(
