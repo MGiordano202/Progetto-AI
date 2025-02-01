@@ -49,7 +49,7 @@ class Grid:
                 cell = self.get_cell(new_row, new_col)
                 if cell in ["0", "G", "D", "P"]:
                     neighbors.append((new_row, new_col))
-        print(f"Vicini di ({rows}, {cols}): {neighbors}")
+        #print(f"Vicini di ({rows}, {cols}): {neighbors}")
         return neighbors
 
     def get_cost(self, rows, cols):
@@ -61,10 +61,7 @@ class Grid:
             return 1
         return float("inf")
 
-    def add_walls(self):
-        wall_positions = [(2, 0)]  # Example positions
-        for row, col in wall_positions:
-            self.set_wall(row, col)
+
 
     def generate_bomberman_map(self):
         """Genera una mappa in stile Bomberman con blocchi distruttibili e indistruttibili."""

@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89a154d6-1bc2-494b-9e36-2de99f1d532c" name="Changes" comment="31th: GA...again...">
+    <list default="true" id="89a154d6-1bc2-494b-9e36-2de99f1d532c" name="Changes" comment="31th: GA...again...2">
+      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/Operators/Crossover/best_segment_crossover.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/Operators/Crossover/best_segment_crossover.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/Operators/Mutation/localized_mutation.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/Operators/Mutation/localized_mutation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/genetic_algorithm.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/genetic_algorithm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/population/population.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/population/population.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AI/a_star.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/a_star.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/grid.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,12 +32,12 @@
     &quot;assignee&quot;: &quot;MGiordano202&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/MGiordano202/Progetto-AI.git",
-    "accountId": "2fb29152-e3a5-4101-92c7-d5db293edc2b"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/MGiordano202/Progetto-AI.git&quot;,
+    &quot;accountId&quot;: &quot;2fb29152-e3a5-4101-92c7-d5db293edc2b&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/AI/Genetic_Algorithm/population/dfs.py" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -53,31 +53,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Notification.DisplayName-DoNotAsk-WindowsDefender&quot;: &quot;Microsoft Defender may affect IDE&quot;,
-    &quot;Notification.DoNotAsk-WindowsDefender&quot;: &quot;true&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/giord/PycharmProjects/Progetto-AI/img&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Notification.DisplayName-DoNotAsk-WindowsDefender": "Microsoft Defender may affect IDE",
+    "Notification.DoNotAsk-WindowsDefender": "true",
+    "Python.main.executor": "Run",
+    "Python.test.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/giord/PycharmProjects/Progetto-AI/img",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "aDefault",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;PLAIN_TEXT&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "PLAIN_TEXT"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\giord\PycharmProjects\Progetto-AI\img" />
@@ -117,8 +118,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-PY-243.22562.220" />
-        <option value="bundled-python-sdk-0fc6c617c4bd-9a18a617cbe4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.22562.220" />
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-PY-243.23654.177" />
+        <option value="bundled-python-sdk-91d3a02ef49d-43b77aa2d136-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.23654.177" />
       </set>
     </attachedChunks>
   </component>
@@ -158,7 +159,9 @@
       <workItem from="1737535798730" duration="41696000" />
       <workItem from="1737654233918" duration="28374000" />
       <workItem from="1737798281492" duration="3806000" />
-      <workItem from="1737880485135" duration="23475000" />
+      <workItem from="1737880485135" duration="23614000" />
+      <workItem from="1738403013845" duration="207000" />
+      <workItem from="1738403593765" duration="6281000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -416,7 +419,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737891792992</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="31th: GA...again...2">
+      <option name="closed" value="true" />
+      <created>1737913163344</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1737913163344</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -434,7 +445,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="9th:  Updated `generate_maze` method in `Grid` class to set the goal cell to &quot;G&quot;.&#10;- Added comments to exclude portions of code.&#10;- Implemented `generate_bomberman_map` method to set the goal cell to &quot;G&quot;.&#10;- Provided example implementation of `print_grid` method for visualizing the grid.&#10;- Ensured player movement is updated correctly in the game loop.&#10;- Added `BombermanGame` class with methods to initialize the game, update player and enemy positions, and draw the grid." />
     <MESSAGE value="10th: Fixed the movement, now the algorithm works, next TODO: Enemies and Bombs logic implementation" />
     <MESSAGE value="11th: started to implement the bomb logic, TODO: 1) when it explodes it has to print &quot;e&quot; and then back again &quot;0&quot; (optional) 2) When there is a destructible object behind another destructible object they have to vanish together" />
     <MESSAGE value="12th: bomb logic implemented, now implementing it with the algrithm" />
@@ -459,9 +469,11 @@
     <MESSAGE value="28th: adjusted fitness function, and genetic_algorithm.py, ora taglia un genoma a perfetta metà e scambia le due parti, così potrebbe essere meglio" />
     <MESSAGE value="29th: adjusting, probabilmente il motivo per cui l'algoritmo genera path corti è che la ricerca in profondità che &quot;fallisce&quot;" />
     <MESSAGE value="31th: GA...again..." />
-    <option name="LAST_COMMIT_MESSAGE" value="31th: GA...again..." />
+    <MESSAGE value="31th: GA...again...2" />
+    <option name="LAST_COMMIT_MESSAGE" value="31th: GA...again...2" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Progetto_AI$main.coverage" NAME="main Coverage Results" MODIFIED="1737913077507" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Progetto_AI$test.coverage" NAME="test Coverage Results" MODIFIED="1738409352790" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Progetto_AI$main.coverage" NAME="main Coverage Results" MODIFIED="1738408341147" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
