@@ -4,7 +4,7 @@ class Individual:
     def __init__(self, genome):
         """
         Inizializza un nuovo individuo.
-        :param genome:  Stringa di carattreri ( 'u', 'd', 'l', 'r')
+        :param genome:  Tuple di posizioni (riga, colonna) che rappresentano il genoma dell'individuo.
 
         """
         self.genome = genome

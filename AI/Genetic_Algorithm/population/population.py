@@ -1,7 +1,7 @@
 import random
 
 from AI.Genetic_Algorithm.Operators.Crossover.best_segment_crossover import best_segment_crossover
-from AI.Genetic_Algorithm.Operators.Mutation.localized_mutation import localized_mutation
+from AI.Genetic_Algorithm.Operators.Mutation.segment_mutation import localized_mutation
 from AI.Genetic_Algorithm.Operators.Selection.tournament_selection import tournament_selection
 from AI.Genetic_Algorithm.individual import Individual
 from AI.Genetic_Algorithm.population.dfs import generate_all_paths

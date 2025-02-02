@@ -1,22 +1,20 @@
 from AI.Genetic_Algorithm.Operators.Crossover.best_segment_crossover import repair_genome
-
+from AI.Genetic_Algorithm.Operators.Mutation.segment_mutation import segment_mutation
+import random
+from AI.Genetic_Algorithm.individual import Individual
 from grid import Grid
 
-# Configura la griglia (modifica secondo la tua configurazione)
-grid = Grid(rows=10, cols=10)
-# Assicurati che la griglia sia coerente con ciò che ti serve per il test (es. posizioni passabili, ostacoli, ecc.)
+random.seed(42)  # Per ottenere risultati riproducibili
 
-# Definisci lo start e il goal
-start = (0, 0)
-goal = (5, 5)
+grid = Grid(5, 5)
+grid.generate_bomberman_map()  # Genera una mappa casuale con muri e blocchi
 
-# Crea un percorso “rotto”: ad esempio, un percorso in cui viene inserito un salto non valido
-broken_genome = [start, (0, 1), (0, 3), (1, 3), (2, 3), goal]
+original_path = [(1, 1), (1, 2), (1, 3), (2, 3), (3, 3), (4, 3)]  # Percorso iniziale valido
+individual = Individual(genome=original_path)
 
-# Stampa il percorso originale
-print("Percorso originale:", broken_genome)
+mutated_individual = segment_mutation(individual, mutation_rate=0.5, grid=grid)
 
-# Esegui la riparazione
-repaired_genome = repair_genome(broken_genome, goal, grid)
-
-print("Percorso riparato:", repaired_genome)
+assert mutated_individual is not None, "La mutazione ha restituito None"
+assert mutated_individual.genome != original_path, "Il percorso non è cambiato"
+assert mutated_individual.genome[0] == original_path[0], "Il punto di partenza è cambiato!"
+assert mutated_individual.genome[-1] == original_path[-1], "Il punto di arrivo è cambiato!"
