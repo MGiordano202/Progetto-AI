@@ -1,7 +1,7 @@
 import random
 
 from AI.Genetic_Algorithm.Operators.Crossover.best_segment_crossover import best_segment_crossover
-from AI.Genetic_Algorithm.Operators.Mutation.segment_mutation import localized_mutation
+from AI.Genetic_Algorithm.Operators.Mutation.segment_mutation import segment_mutation
 from AI.Genetic_Algorithm.Operators.Selection.tournament_selection import tournament_selection
 from AI.Genetic_Algorithm.individual import Individual
 from AI.Genetic_Algorithm.population.dfs import generate_all_paths
@@ -49,7 +49,7 @@ def next_generation(population, mutation_rate, tournament_size, grid, goal, star
     new_population = []
 
     # Elitismo: Manteniamo una percentuale dei migliori individui
-    elite_count = int(0.1 * len(population))  # Manteniamo almeno il 10% dei migliori
+    elite_count = int(0.2 * len(population))  # Manteniamo almeno il 10% dei migliori
     sorted_population = sorted(population, key=lambda x: x.fitness, reverse=True)
     elites = sorted_population[:elite_count]
     new_population.extend(elites)
@@ -68,8 +68,8 @@ def next_generation(population, mutation_rate, tournament_size, grid, goal, star
         print(f"[DEBUG] Crossover genitori: {parent1.genome} x {parent2.genome} -> Figli: {child1.genome}, {child2.genome}")
 
         # Mutazione localizzata
-        mutated_child1 = localized_mutation(child1, mutation_rate, grid)
-        mutated_child2 = localized_mutation(child2, mutation_rate, grid)
+        mutated_child1 = segment_mutation(child1, mutation_rate, grid)
+        mutated_child2 = segment_mutation(child2, mutation_rate, grid)
 
         # Aggiungi i figli mutati alla nuova popolazione
         new_population.append(mutated_child1)

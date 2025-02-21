@@ -67,7 +67,7 @@ class GeneticAlgorithm:
             best_fitness_last_generation = best_fitness
 
             # Criterio di terminazione: fitness target raggiunta
-            if best_fitness >= 1040:
+            if best_fitness >= 1080:
                 print("Obiettivo raggiunto!")
                 break
 
