@@ -1,4 +1,6 @@
 import pygame
+
+from bomb import Bomb
 from grid import Grid
 from player import Player
 from game_elements import load_images
@@ -163,9 +165,7 @@ class BombermanGame:
                     elif event.key == pygame.K_d:
                         self.move_player(0, 1)
                     elif event.key == pygame.K_SPACE:  # Spazio per piazzare una bomba
-                        bomb = self.player.place_bomb(self.grid, self.bombs)
-                        if bomb is not None:
-                            self.bombs.append(bomb)
+                        self.handle_bomb_placement()
 
 
     def move_player(self, d_row, d_col):
@@ -179,8 +179,7 @@ class BombermanGame:
             target_cell = self.grid.get_cell(new_row, new_col)
 
             if target_cell == "D":
-                self.player.place_bomb(self.grid, self.bombs)
-                self.waiting_for_bomb = True
+                self.handle_bomb_placement()
                 return
 
 
@@ -193,6 +192,32 @@ class BombermanGame:
                 self.grid.set_cell(self.player.row, self.player.col, "0")
             self.player.row, self.player.col = new_row, new_col
             self.grid.set_cell(self.player.row, self.player.col, "P")
+
+    def handle_bomb_placement(self):
+        """
+        Gestisce il posizionamento di una nuova bomba nella posizione corrente del giocatore.
+        Verifica che non ci sia già una bomba nella cella e che il giocatore non sia in attesa di un'esplosione.
+        """
+        # Se il giocatore è già in attesa, non è possibile piazzare una nuova bomba.
+        if self.waiting_for_bomb:
+            print("Il giocatore sta già aspettando che la bomba esploda!")
+            return
+
+        # Recupera la posizione corrente del giocatore.
+        row, col = self.player.row, self.player.col
+
+        # Verifica se in quella cella è già presente una bomba.
+        for bomb in self.bombs:
+            if bomb.row == row and bomb.col == col:
+                print("C'è già una bomba in questa posizione!")
+                return
+
+        # Crea una nuova bomba e aggiorna la griglia.
+        bomb = Bomb(row, col)
+        self.grid.set_cell(row, col, "B")
+        self.bombs.append(bomb)
+        self.waiting_for_bomb = True
+        print(f"Bomba piazzata in posizione ({row}, {col}).")
 
     def draw(self):
         self.screen.fill((0, 110, 0))

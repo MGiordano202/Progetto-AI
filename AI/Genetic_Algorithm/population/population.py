@@ -38,20 +38,30 @@ def generate_initial_population(grid, start, goal, population_size):
 def next_generation(population, mutation_rate, tournament_size, grid, goal, start):
     """
     Crea la prossima generazione di individui.
-    :param population: lista di individui (oggetti Individual)
+    :param population: Lista di individui (oggetti Individual)
     :param mutation_rate: Probabilità di mutazione per ogni gene.
     :param tournament_size: Numero di individui scelti per il torneo di selezione.
     :param grid: Griglia di gioco.
     :param goal: Posizione dell'obiettivo (tuple).
     :param start: Posizione iniziale (tuple).
-    :return: nuova popolazione.
+    :return: Nuova popolazione.
     """
     new_population = []
 
     # Elitismo: Manteniamo una percentuale dei migliori individui
-    elite_count = int(0.2 * len(population))  # Manteniamo almeno il 10% dei migliori
+    elite_count = int(0.2 * len(population)) #20% di elitismo
     sorted_population = sorted(population, key=lambda x: x.fitness, reverse=True)
-    elites = sorted_population[:elite_count]
+
+    elites = []
+    seen_fitness = set()
+
+    for ind in sorted_population:
+        if ind.fitness not in seen_fitness:  # Controlla se la fitness è già stata selezionata
+            elites.append(ind)
+            seen_fitness.add(ind.fitness)
+        if len(elites) >= elite_count:
+            break
+
     new_population.extend(elites)
 
     # Genera il resto della popolazione

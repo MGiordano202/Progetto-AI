@@ -16,7 +16,7 @@ class Individual:
         :param grid: Griglia di gioco.
         :param player_start: Posizione di inizio del giocatore.
         :param player_goal: Posizione dell'obiettivo.
-        :return: fitness dell'individuo.
+        :return: Fitness dell'individuo.
         """
         self.fitness = calculate_fitness(self, grid, player_start, player_goal)
 
