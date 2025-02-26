@@ -1,5 +1,6 @@
 import pygame
 
+from AI.ucs import UCS
 from bomb import Bomb
 from grid import Grid
 from player import Player
@@ -24,24 +25,21 @@ class BombermanGame:
         self.grid = Grid(rows, cols)
         self.grid.generate_bomberman_map()
         self.player = Player(1, 1)
-        self.pathfinder = Astar(self.grid)
-        #self.enemies = [Enemy(rows - 2, cols - 2, self.pathfinder)]
+        self.pathfinder = UCS(self.grid)
+        
         self.images = load_images(cell_size)
         self.bombs = []
 
 
         # Inizializzazione griglia
         self.grid.set_cell(self.player.row, self.player.col, "P")
-        #for enemy in self.enemies:
-            #self.grid.set_cell(enemy.row, enemy.col, "E")
-
         self.grid.set_cell(self.rows - 2,self.cols -2, "G")
-        self.player_goal = (self.rows - 2,self.cols - 2)  # Obiettivo del giocatore
+        self.goal = (self.rows - 2,self.cols - 2)  # Obiettivo del giocatore
 
         self.ga = GeneticAlgorithm(
             grid = self.grid,
             player_start = (self.player.row, self.player.col),
-            player_goal = self.player_goal,
+            player_goal = self.goal,
             population_size = 20,
             generations = 100,
             mutation_rate = 5,
@@ -51,25 +49,11 @@ class BombermanGame:
         self.best_path = []
         self.current_step = 0
 
-        # Esempio di muri (probabilmente da rimuovere)
-    def add_walls(self):
-        wall_positions = [(2, 2), (2, 3), (3, 2), (3, 3)]  # Example positions
-        for row, col in wall_positions:
-            self.grid.set_wall(row, col)
-
 
 
     def update(self):
-        # Muove i nemici
-        #for enemy in self.enemies:
-            #old_row, old_col = enemy.row, enemy.col
-            #enemy.update(self.grid)
-            # Libera la cella precedente
-            #self.grid.set_cell(old_row, old_col, 0)
-            # Aggiorna la nuova posizione sulla griglia
-            #self.grid.set_cell(enemy.row, enemy.col, "E")
 
-        if (self.player.row, self.player.col) == self.player_goal:
+        if (self.player.row, self.player.col) == self.goal:
             print("Obiettivo raggiunto! Hai vinto!")
             self.running = False
             return
@@ -85,9 +69,10 @@ class BombermanGame:
                 return
 
             # A-Star
-            #self.player.move_towards_goal(self.grid, self.pathfinder, self.player_goal, self.bombs)
+            self.player.move_towards_goal(self.grid, self.pathfinder, self.goal, self.bombs)
 
             # Genetic Algorithm
+            """
             if self.current_step < len(self.best_path):
                 action = self.best_path[self.current_step]
                 self.execute_action(action)
@@ -103,7 +88,7 @@ class BombermanGame:
                     print("Nessun percorso trovato.")
                     self.running = False
                     return
-
+            """
         # Gestione delle bombe
         self.update_bombs()
 

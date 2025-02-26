@@ -10,8 +10,8 @@ class Astar:
             return None, []
 
         block_destruction_cost = 5
-        open_heap = []
-        heappush(open_heap, (0, start))
+        frontiera = []
+        heappush(frontiera, (0, start))
         open_set = {start}
 
         came_from = {}
@@ -20,7 +20,7 @@ class Astar:
         blocks_to_destroy= []
 
         while open_set:
-            __, current = heappop(open_heap)
+            __, current = heappop(frontiera)
             open_set.remove(current)
             #print(f"Esaminando nodo: {current}, Goal: {goal}")  # Debug
 
@@ -31,6 +31,7 @@ class Astar:
             for neighbor in self.grid.get_neighbors(*current):
                 cell_type = self.grid.get_cell(*neighbor)
 
+                # Gestione degli ostacoli
                 if cell_type == "D":
                     tentative_g_score = g_score[current] + block_destruction_cost
                     if neighbor not in blocks_to_destroy:
@@ -47,7 +48,7 @@ class Astar:
                     f_score[neighbor] = g_score[neighbor] + self.heuristic(neighbor, goal)
 
                     if neighbor not in open_set:
-                        heappush(open_heap, (f_score[neighbor], neighbor))
+                        heappush(frontiera, (f_score[neighbor], neighbor))
                         open_set.add(neighbor)
 
 

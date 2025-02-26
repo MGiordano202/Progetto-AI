@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89a154d6-1bc2-494b-9e36-2de99f1d532c" name="Changes" comment="34th: GA WORKS, maybe this time for the goods">
+    <list default="true" id="89a154d6-1bc2-494b-9e36-2de99f1d532c" name="Changes" comment="35th: Some adjustments on the GA">
+      <change afterPath="$PROJECT_DIR$/AI/ucs.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/genetic_algorithm.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/genetic_algorithm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/individual.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/individual.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/population/population.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/population/population.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AI/a_star.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/a_star.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bomberman.py" beforeDir="false" afterPath="$PROJECT_DIR$/bomberman.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/grid.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enemy.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,34 +54,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Notification.DisplayName-DoNotAsk-WindowsDefender": "Microsoft Defender may affect IDE",
-    "Notification.DoNotAsk-WindowsDefender": "true",
-    "Python tests.Python tests for test.TestGameStateFunctions.test_evaluate.executor": "Run",
-    "Python tests.Python tests in test.py.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.test.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/giord/PycharmProjects/Progetto-AI/img",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "aDefault",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Notification.DisplayName-DoNotAsk-WindowsDefender&quot;: &quot;Microsoft Defender may affect IDE&quot;,
+    &quot;Notification.DoNotAsk-WindowsDefender&quot;: &quot;true&quot;,
+    &quot;Python tests.Python tests for test.TestGameStateFunctions.test_evaluate.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/giord/PycharmProjects/Progetto-AI/img&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "PLAIN_TEXT"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;PLAIN_TEXT&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\giord\PycharmProjects\Progetto-AI\img" />
@@ -229,7 +227,8 @@
       <workItem from="1737880485135" duration="23475000" />
       <workItem from="1740135034990" duration="206000" />
       <workItem from="1740135356185" duration="41000" />
-      <workItem from="1740141479987" duration="36208000" />
+      <workItem from="1740141479987" duration="36576000" />
+      <workItem from="1740580955160" duration="7037000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -503,7 +502,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740144819971</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="35th: Some adjustments on the GA">
+      <option name="closed" value="true" />
+      <created>1740506210221</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1740506210221</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -521,7 +528,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="11th: started to implement the bomb logic, TODO: 1) when it explodes it has to print &quot;e&quot; and then back again &quot;0&quot; (optional) 2) When there is a destructible object behind another destructible object they have to vanish together" />
     <MESSAGE value="12th: bomb logic implemented, now implementing it with the algrithm" />
     <MESSAGE value="13th: corrected the algorithm but it's sub-optimal, TODO: correct the algorithm, implement GA" />
     <MESSAGE value="13th: started to implement the GA" />
@@ -546,10 +552,11 @@
     <MESSAGE value="31th: GA...again..." />
     <MESSAGE value="33th: fixing segment_mutation.py" />
     <MESSAGE value="34th: GA WORKS, maybe this time for the goods" />
-    <option name="LAST_COMMIT_MESSAGE" value="34th: GA WORKS, maybe this time for the goods" />
+    <MESSAGE value="35th: Some adjustments on the GA" />
+    <option name="LAST_COMMIT_MESSAGE" value="35th: Some adjustments on the GA" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Progetto_AI$main.coverage" NAME="main Coverage Results" MODIFIED="1740503242260" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Progetto_AI$main.coverage" NAME="main Coverage Results" MODIFIED="1740585399620" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Progetto_AI$test.coverage" NAME="test Coverage Results" MODIFIED="1740414950984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Progetto_AI$.coverage" NAME=" Coverage Results" MODIFIED="1740494025295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
