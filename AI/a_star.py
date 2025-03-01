@@ -11,48 +11,44 @@ class Astar:
 
         block_destruction_cost = 5
         frontiera = []
-        heappush(frontiera, (0, start))
-        open_set = {start}
-
+        heappush(frontiera, (self.heuristic(start, goal), start))
         came_from = {}
         g_score = {start: 0}
         f_score = {start: self.heuristic(start, goal)}
+        visited_set = set()
         blocks_to_destroy= []
 
-        while open_set:
-            __, current = heappop(frontiera)
-            open_set.remove(current)
-            #print(f"Esaminando nodo: {current}, Goal: {goal}")  # Debug
+        while frontiera:
+            _, current_node = heappop(frontiera)
+            #print(f"Esaminando nodo: {current_node}, Goal: {goal}")  # Debug
 
-            if current == goal:
-                path = self.reconstruct_path(came_from, current)
+            if current_node == goal:
+                path = self.reconstruct_path(came_from, current_node)
                 return path, blocks_to_destroy
 
-            for neighbor in self.grid.get_neighbors(*current):
+            if current_node in visited_set:
+                continue # Salta il nodo se è già stato esaminato
+
+            visited_set.add(current_node) # Aggiungi il nodo alla lista dei nodi esaminati
+
+            for neighbor in self.grid.get_neighbors(*current_node):
                 cell_type = self.grid.get_cell(*neighbor)
 
-                # Gestione degli ostacoli
+                # Calcolo del costo per raggiungere il vicino
                 if cell_type == "D":
-                    tentative_g_score = g_score[current] + block_destruction_cost
+                    tentative_g_score = g_score[current_node] + block_destruction_cost # Costo per distruggere un blocco
                     if neighbor not in blocks_to_destroy:
-                        blocks_to_destroy.append(neighbor) # Aggiungi il blocco alla lista
+                        blocks_to_destroy.append(neighbor)
                 else:
-                    tentative_g_score = g_score[current] + 1
-
-                if not self.grid.is_passable(*neighbor) and cell_type != "D":
-                    continue
+                    tentative_g_score = g_score[current_node] + 1
 
                 if tentative_g_score < g_score.get(neighbor, float("inf")):
-                    came_from[neighbor] = current
+                    came_from[neighbor] = current_node
                     g_score[neighbor] = tentative_g_score
-                    f_score[neighbor] = g_score[neighbor] + self.heuristic(neighbor, goal)
+                    f_score[neighbor] = tentative_g_score + self.heuristic(neighbor, goal)
+                    heappush(frontiera, (f_score[neighbor], neighbor))
 
-                    if neighbor not in open_set:
-                        heappush(frontiera, (f_score[neighbor], neighbor))
-                        open_set.add(neighbor)
-
-
-            #print(f"Current: {current}, Open set: {open_set}, G score: {g_score}, F score: {f_score}")
+            # print(f"current_node: {current_node}, Open set: {open_set}, G score: {g_score}, F score: {f_score}")
 
         print("No path found")
         return None, []
@@ -62,9 +58,9 @@ class Astar:
         return abs(a[0] - b[0]) + abs(a[1] - b[1])
 
     @staticmethod
-    def reconstruct_path(came_from, current):
-        path = [current]
-        while current in came_from:
-            current = came_from[current]
-            path.append(current)
+    def reconstruct_path(came_from, current_node):
+        path = [current_node]
+        while current_node in came_from:
+            current_node = came_from[current_node]
+            path.append(current_node)
         return path[::-1]

@@ -18,7 +18,7 @@ class UCS:
         
         block_destruction_cost = 5
         frontier = []
-        heappush(frontier, (0, start))
+        heappush(frontier, (0, start)) # (costo, nodo)
         visited = set()
         
         came_from = {}
@@ -40,7 +40,7 @@ class UCS:
             for neighbor in self.grid.get_neighbors(*current_node):
                 cell_type = self.grid.get_cell(*neighbor)
 
-                #Gesiione degli ostacoli
+               # Gestione dei costi
                 if cell_type == "D":
                     tentative_g_score = g_score[current_node] + block_destruction_cost
                     if neighbor not in block_to_destroy:
@@ -48,16 +48,12 @@ class UCS:
                 else:
                     tentative_g_score = g_score[current_node] + 1
 
-                if not self.grid.is_passable(*neighbor) and cell_type != "D":
-                    continue
-
-                if neighbor in visited:
-                    continue
-
-                if tentative_g_score < g_score.get(neighbor, float("inf")):
-                    came_from[neighbor] = current_node
-                    g_score[neighbor] = tentative_g_score
-                    heappush(frontier, (g_score[neighbor], neighbor))
+                # Aggiorna il percorso se il costo è minore
+                if neighbor not in visited:
+                    if tentative_g_score < g_score.get(neighbor, float("inf")):
+                        came_from[neighbor] = current_node
+                        g_score[neighbor] = tentative_g_score
+                        heappush(frontier, (g_score[neighbor], neighbor))
 
             
         print("No path found")

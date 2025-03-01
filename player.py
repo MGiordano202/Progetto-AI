@@ -18,7 +18,7 @@ class Player:
             print("Il giocatore sta aspettando che la bomba esploda.")
             return
 
-        # Trova il percorso dalla posizione attuale al goal
+        # Trova il percorso dalla posizione attuale al goal utilizzando un algotitmo di pathfinding
         path, blocks_to_destroy = pathfinder.find_path((self.row, self.col), goal)
 
         # Filtra i blocchi distruttibili essenziali (quelli che compaiono nel percorso)
