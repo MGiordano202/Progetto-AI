@@ -15,21 +15,16 @@ class Astar:
         came_from = {}
         g_score = {start: 0}
         f_score = {start: self.heuristic(start, goal)}
-        visited_set = set()
         blocks_to_destroy= []
 
         while frontiera:
-            _, current_node = heappop(frontiera)
+            _, current_node = heappop(frontiera) # nodo con il costo minore
             #print(f"Esaminando nodo: {current_node}, Goal: {goal}")  # Debug
 
             if current_node == goal:
                 path = self.reconstruct_path(came_from, current_node)
                 return path, blocks_to_destroy
 
-            if current_node in visited_set:
-                continue # Salta il nodo se è già stato esaminato
-
-            visited_set.add(current_node) # Aggiungi il nodo alla lista dei nodi esaminati
 
             for neighbor in self.grid.get_neighbors(*current_node):
                 cell_type = self.grid.get_cell(*neighbor)
@@ -42,13 +37,13 @@ class Astar:
                 else:
                     tentative_g_score = g_score[current_node] + 1
 
-                if tentative_g_score < g_score.get(neighbor, float("inf")):
+                if neighbor not in g_score or tentative_g_score < g_score.get(neighbor, float("inf")):
                     came_from[neighbor] = current_node
                     g_score[neighbor] = tentative_g_score
                     f_score[neighbor] = tentative_g_score + self.heuristic(neighbor, goal)
                     heappush(frontiera, (f_score[neighbor], neighbor))
 
-            # print(f"current_node: {current_node}, Open set: {open_set}, G score: {g_score}, F score: {f_score}")
+            print(f"current_node: {current_node}, frontiera: {frontiera}, G score: {g_score}, F score: {f_score}")
 
         print("No path found")
         return None, []

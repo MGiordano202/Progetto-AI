@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89a154d6-1bc2-494b-9e36-2de99f1d532c" name="Changes" comment="31th: GA...again...2">
+    <list default="true" id="89a154d6-1bc2-494b-9e36-2de99f1d532c" name="Changes" comment="31th: GA...again...2|36th: starting to implement UCS|37 th: UCS Works">
       <change beforePath="$PROJECT_DIR$/.idea/Progetto-AI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Progetto-AI.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/fitness.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/fitness.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/genetic_algorithm.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/genetic_algorithm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/population/dfs.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/population/dfs.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AI/a_star.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/a_star.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AI/ucs.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/ucs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bomberman.py" beforeDir="false" afterPath="$PROJECT_DIR$/bomberman.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +29,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -37,7 +40,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/MGiordano202/Progetto-AI.git&quot;,
-    &quot;accountId&quot;: &quot;2fb29152-e3a5-4101-92c7-d5db293edc2b&quot;
+    &quot;accountId&quot;: &quot;8bbf824f-3ab8-410b-a19a-85c6cb2fa383&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
@@ -59,6 +62,8 @@
   &quot;keyToString&quot;: {
     &quot;Notification.DisplayName-DoNotAsk-WindowsDefender&quot;: &quot;Microsoft Defender may affect IDE&quot;,
     &quot;Notification.DoNotAsk-WindowsDefender&quot;: &quot;true&quot;,
+    &quot;Python tests.Python tests for test.TestGameStateFunctions.test_evaluate.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test.py.executor&quot;: &quot;Run&quot;,
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;Python.test.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
@@ -72,7 +77,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -92,7 +97,7 @@
       <recent name="C:\Users\Manuel\PycharmProjects\Progetto-AI" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Progetto-AI" />
       <option name="ENV_FILES" value="" />
@@ -116,12 +121,74 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Progetto-AI" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test.TestGameStateFunctions.test_evaluate" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="Progetto-AI" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test.TestGameStateFunctions.test_evaluate&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests in test.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="Progetto-AI" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/test.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python tests.Python tests in test.py" />
+        <item itemvalue="Python tests.Python tests for test.TestGameStateFunctions.test_evaluate" />
+        <item itemvalue="Python.test" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-PY-243.25659.43" />
-        <option value="bundled-python-sdk-181015f7ab06-4df51de95216-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.25659.43" />
+        <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-PY-243.24978.54" />
+        <option value="bundled-python-sdk-91e3b7efe1d4-466328ff949b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.24978.54" />
       </set>
     </attachedChunks>
   </component>
@@ -161,11 +228,12 @@
       <workItem from="1737535798730" duration="41696000" />
       <workItem from="1737654233918" duration="28374000" />
       <workItem from="1737798281492" duration="3806000" />
-      <workItem from="1737880485135" duration="23614000" />
-      <workItem from="1738403013845" duration="207000" />
-      <workItem from="1738403593765" duration="6281000" />
-      <workItem from="1740841618278" duration="923000" />
-      <workItem from="1740847832285" duration="12662000" />
+      <workItem from="1737880485135" duration="23475000" />
+      <workItem from="1740135034990" duration="206000" />
+      <workItem from="1740135356185" duration="41000" />
+      <workItem from="1740141479987" duration="36576000" />
+      <workItem from="1740580955160" duration="7289000" />
+      <workItem from="1740750613119" duration="4287000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -423,15 +491,39 @@
       <option name="project" value="LOCAL" />
       <updated>1737891792992</updated>
     </task>
-    <task id="LOCAL-00033" summary="31th: GA...again...2">
+    <task id="LOCAL-00033" summary="33th: fixing segment_mutation.py">
       <option name="closed" value="true" />
-      <created>1737913163344</created>
+      <created>1738490543973</created>
       <option name="number" value="00033" />
       <option name="presentableId" value="LOCAL-00033" />
       <option name="project" value="LOCAL" />
-      <updated>1737913163344</updated>
+      <updated>1738490543973</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="34th: GA WORKS, maybe this time for the goods">
+      <option name="closed" value="true" />
+      <created>1740144819971</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1740144819971</updated>
+    </task>
+    <task id="LOCAL-00035" summary="35th: Some adjustments on the GA">
+      <option name="closed" value="true" />
+      <created>1740506210221</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1740506210221</updated>
+    </task>
+    <task id="LOCAL-00036" summary="36th: starting to implement UCS">
+      <option name="closed" value="true" />
+      <created>1740590229009</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1740590229009</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -449,9 +541,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="10th: Fixed the movement, now the algorithm works, next TODO: Enemies and Bombs logic implementation" />
-    <MESSAGE value="11th: started to implement the bomb logic, TODO: 1) when it explodes it has to print &quot;e&quot; and then back again &quot;0&quot; (optional) 2) When there is a destructible object behind another destructible object they have to vanish together" />
-    <MESSAGE value="12th: bomb logic implemented, now implementing it with the algrithm" />
     <MESSAGE value="13th: corrected the algorithm but it's sub-optimal, TODO: correct the algorithm, implement GA" />
     <MESSAGE value="13th: started to implement the GA" />
     <MESSAGE value="14th: adding more on the GA" />
@@ -473,11 +562,15 @@
     <MESSAGE value="28th: adjusted fitness function, and genetic_algorithm.py, ora taglia un genoma a perfetta metà e scambia le due parti, così potrebbe essere meglio" />
     <MESSAGE value="29th: adjusting, probabilmente il motivo per cui l'algoritmo genera path corti è che la ricerca in profondità che &quot;fallisce&quot;" />
     <MESSAGE value="31th: GA...again..." />
-    <MESSAGE value="31th: GA...again...2" />
-    <option name="LAST_COMMIT_MESSAGE" value="31th: GA...again...2" />
+    <MESSAGE value="33th: fixing segment_mutation.py" />
+    <MESSAGE value="34th: GA WORKS, maybe this time for the goods" />
+    <MESSAGE value="35th: Some adjustments on the GA" />
+    <MESSAGE value="36th: starting to implement UCS" />
+    <option name="LAST_COMMIT_MESSAGE" value="36th: starting to implement UCS" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Progetto_AI$test.coverage" NAME="test Coverage Results" MODIFIED="1738409352790" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Progetto_AI$main.coverage" NAME="main Coverage Results" MODIFIED="1740863927129" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Progetto_AI$main.coverage" NAME="main Coverage Results" MODIFIED="1741084664460" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Progetto_AI$test.coverage" NAME="test Coverage Results" MODIFIED="1740414950984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Progetto_AI$.coverage" NAME=" Coverage Results" MODIFIED="1740494025295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

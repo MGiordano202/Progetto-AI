@@ -25,7 +25,7 @@ class BombermanGame:
         self.grid = Grid(rows, cols)
         self.grid.generate_bomberman_map()
         self.player = Player(1, 1)
-        self.pathfinder = UCS(self.grid)
+        self.pathfinder = Astar(self.grid)
         
         self.images = load_images(cell_size)
         self.bombs = []
@@ -40,9 +40,9 @@ class BombermanGame:
             grid = self.grid,
             player_start = (self.player.row, self.player.col),
             player_goal = self.goal,
-            population_size = 20,
+            population_size = 30,
             generations = 100,
-            mutation_rate = 5,
+            mutation_rate = 15,
             tournament_size = 5
         )
 
@@ -68,7 +68,7 @@ class BombermanGame:
                     self.waiting_for_bomb = False  # Sblocca il giocatore
                 return
 
-            # A-Star
+            # Algoritmo A* / UCS
             self.player.move_towards_goal(self.grid, self.pathfinder, self.goal, self.bombs)
 
             # Genetic Algorithm

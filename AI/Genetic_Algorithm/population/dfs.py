@@ -25,12 +25,7 @@ def generate_all_paths(grid, start, goal):
             next_position = (current[0] + direction[0], current[1] + direction[1])
 
             # Controlla se la prossima posizione è valida e non ancora visitata
-            if (
-                    0 <= next_position[0] < grid.rows and
-                    0 <= next_position[1] < grid.cols and
-                    grid.is_passable(next_position[0], next_position[1])
-                    and next_position not in visited
-            ):
+            if grid.is_passable(next_position[0], next_position[1]) and next_position not in visited:
                 visited.add(next_position)
                 path.append(next_position)
 

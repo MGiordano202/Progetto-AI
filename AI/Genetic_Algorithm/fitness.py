@@ -16,7 +16,7 @@ def calculate_fitness(individual, grid, player_start, player_goal):
     visited_positions = set()
     steps_taken = 0
     total_destroyed_blocks = 0  # Conta quanti blocchi vengono distrutti
-    max_steps_without_goal = 100  # Numero massimo di passi senza raggiungere il goal
+    max_steps_without_goal = 25  # Numero massimo di passi senza raggiungere il goal
 
     # Soglia massima per i blocchi distrutti prima di penalizzare
     max_blocks_without_penalty = 7
@@ -52,7 +52,7 @@ def calculate_fitness(individual, grid, player_start, player_goal):
 
         # Penalizza movimenti ripetuti nella stessa cella
         if new_position in visited_positions:
-            fitness -= 2  # Penalità per cicli
+            fitness -= 5  # Penalità per cicli
         else:
             visited_positions.add(new_position)
 
@@ -71,7 +71,7 @@ def calculate_fitness(individual, grid, player_start, player_goal):
     # Premio per il completamento rapido del percorso
     if current_position == player_goal:
         fitness += 1000  # Grande premio per aver raggiunto il goal
-        fitness += 5 / steps_taken  # Premia un completamento rapido
+        fitness += 10 / steps_taken  # Premia un completamento rapido
 
     # Penalità per percorsi troppo lunghi senza raggiungere il goal
     if steps_taken > max_steps_without_goal:

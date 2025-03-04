@@ -19,12 +19,11 @@ class UCS:
         block_destruction_cost = 5
         frontier = []
         heappush(frontier, (0, start)) # (costo, nodo)
-        visited = set()
-        
+
         came_from = {}
         g_score = {start: 0}
         block_to_destroy = []
-        
+
         while frontier:
             costo, current_node = heappop(frontier)
 
@@ -32,10 +31,6 @@ class UCS:
                 path = self.reconstruct_path(came_from, current_node)
                 return path, block_to_destroy
 
-            if current_node in visited:
-                continue
-
-            visited.add(current_node)
 
             for neighbor in self.grid.get_neighbors(*current_node):
                 cell_type = self.grid.get_cell(*neighbor)
@@ -49,8 +44,7 @@ class UCS:
                     tentative_g_score = g_score[current_node] + 1
 
                 # Aggiorna il percorso se il costo è minore
-                if neighbor not in visited:
-                    if tentative_g_score < g_score.get(neighbor, float("inf")):
+                if neighbor not in g_score or tentative_g_score < g_score[neighbor]:
                         came_from[neighbor] = current_node
                         g_score[neighbor] = tentative_g_score
                         heappush(frontier, (g_score[neighbor], neighbor))
