@@ -41,7 +41,7 @@ class Grid:
     def is_free(self, row, col):
         return self.grid[row][col] == "0"
 
-    def get_neighbors(self, row, col):
+    def get_child(self, row, col):
         neighbors = []
         for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
             new_row, new_col = row + dr, col + dc

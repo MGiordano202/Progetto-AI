@@ -32,22 +32,22 @@ class UCS:
                 return path, block_to_destroy
 
 
-            for neighbor in self.grid.get_neighbors(*current_node):
-                cell_type = self.grid.get_cell(*neighbor)
+            for child in self.grid.get_child(*current_node):
+                cell_type = self.grid.get_cell(*child)
 
                # Gestione dei costi
                 if cell_type == "D":
                     tentative_g_score = g_score[current_node] + block_destruction_cost
-                    if neighbor not in block_to_destroy:
-                        block_to_destroy.append(neighbor)
+                    if child not in block_to_destroy:
+                        block_to_destroy.append(child)
                 else:
                     tentative_g_score = g_score[current_node] + 1
 
                 # Aggiorna il percorso se il costo è minore
-                if neighbor not in g_score or tentative_g_score < g_score[neighbor]:
-                        came_from[neighbor] = current_node
-                        g_score[neighbor] = tentative_g_score
-                        heappush(frontier, (g_score[neighbor], neighbor))
+                if child not in g_score or tentative_g_score < g_score[child]:
+                        came_from[child] = current_node
+                        g_score[child] = tentative_g_score
+                        heappush(frontier, (g_score[child], child))
 
             
         print("No path found")

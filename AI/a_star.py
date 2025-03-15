@@ -26,24 +26,24 @@ class Astar:
                 return path, blocks_to_destroy
 
 
-            for neighbor in self.grid.get_neighbors(*current_node):
-                cell_type = self.grid.get_cell(*neighbor)
+            for child in self.grid.get_child(*current_node):
+                cell_type = self.grid.get_cell(*child)
 
                 # Calcolo del costo per raggiungere il vicino
                 if cell_type == "D":
                     tentative_g_score = g_score[current_node] + block_destruction_cost # Costo per distruggere un blocco
-                    if neighbor not in blocks_to_destroy:
-                        blocks_to_destroy.append(neighbor)
+                    if child not in blocks_to_destroy:
+                        blocks_to_destroy.append(child)
                 else:
                     tentative_g_score = g_score[current_node] + 1
 
-                if neighbor not in g_score or tentative_g_score < g_score.get(neighbor, float("inf")):
-                    came_from[neighbor] = current_node
-                    g_score[neighbor] = tentative_g_score
-                    f_score[neighbor] = tentative_g_score + self.heuristic(neighbor, goal)
-                    heappush(frontiera, (f_score[neighbor], neighbor))
+                if child not in g_score or tentative_g_score < g_score.get(child, float("inf")):
+                    came_from[child] = current_node
+                    g_score[child] = tentative_g_score
+                    f_score[child] = tentative_g_score + self.heuristic(child, goal)
+                    heappush(frontiera, (f_score[child], child))
 
-            print(f"current_node: {current_node}, frontiera: {frontiera}, G score: {g_score}, F score: {f_score}")
+            #print(f"current_node: {current_node}, frontiera: {frontiera}, G score: {g_score}, F score: {f_score}")
 
         print("No path found")
         return None, []

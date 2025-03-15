@@ -43,7 +43,8 @@ class BombermanGame:
             population_size = 30,
             generations = 100,
             mutation_rate = 15,
-            tournament_size = 5
+            tournament_size = 5,
+            crossover_rate = 0.8
         )
 
         self.best_path = []
@@ -69,10 +70,10 @@ class BombermanGame:
                 return
 
             # Algoritmo A* / UCS
-            self.player.move_towards_goal(self.grid, self.pathfinder, self.goal, self.bombs)
+            #self.player.move_towards_goal(self.grid, self.pathfinder, self.goal, self.bombs)
 
             # Genetic Algorithm
-            """
+
             if self.current_step < len(self.best_path):
                 action = self.best_path[self.current_step]
                 self.execute_action(action)
@@ -88,7 +89,7 @@ class BombermanGame:
                     print("Nessun percorso trovato.")
                     self.running = False
                     return
-            """
+
         # Gestione delle bombe
         self.update_bombs()
 

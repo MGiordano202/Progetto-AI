@@ -35,7 +35,7 @@ def generate_initial_population(grid, start, goal, population_size):
     return population
 
 
-def next_generation(population, mutation_rate, tournament_size, grid, goal, start):
+def next_generation(population, mutation_rate, tournament_size, crossover_rate, grid, goal, start):
     """
     Crea la prossima generazione di individui.
     :param population: Lista di individui (oggetti Individual)
@@ -73,11 +73,15 @@ def next_generation(population, mutation_rate, tournament_size, grid, goal, star
         while parent1 == parent2:
             parent2 = tournament_selection(population, tournament_size)
 
-        # Crossover ibrido basato sui segmenti migliori
-        child1, child2 = best_segment_crossover(parent1, parent2, goal, start, grid)
-        print(f"[DEBUG] Crossover genitori: {parent1.genome} x {parent2.genome} -> Figli: {child1.genome}, {child2.genome}")
+            # Decidi se eseguire il crossover in base alla probabilità
+        if random.random() < crossover_rate:
+            child1, child2 = best_segment_crossover(parent1, parent2, goal, start, grid)
+            print(f"[DEBUG] Crossover genitori: {parent1.genome} x {parent2.genome} -> Figli: {child1.genome}, {child2.genome}")
+        else:
+            child1, child2 = Individual(parent1.genome[:]), Individual(parent2.genome[:])
+            print(f"[DEBUG] Nessun crossover: Figli identici ai genitori")
 
-        # Mutazione localizzata
+        # Mutazione dei figli
         mutated_child1 = segment_mutation(child1, mutation_rate, grid)
         mutated_child2 = segment_mutation(child2, mutation_rate, grid)
 

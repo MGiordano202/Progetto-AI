@@ -4,7 +4,7 @@ from AI.Genetic_Algorithm.population.population import next_generation
 
 
 class GeneticAlgorithm:
-    def __init__(self, grid, player_start, player_goal, population_size, generations, mutation_rate, tournament_size):
+    def __init__(self, grid, player_start, player_goal, population_size, generations, mutation_rate, tournament_size, crossover_rate):
         self.grid = grid
         self.player_start = player_start
         self.player_goal = player_goal
@@ -12,6 +12,7 @@ class GeneticAlgorithm:
         self.generations = generations
         self.mutation_rate = mutation_rate
         self.tournament_size = tournament_size
+        self.crossover_rate = crossover_rate
         self.population = []
         self.best_individuals = []  # Per monitorare il migliore di ogni generazione
 
@@ -81,6 +82,7 @@ class GeneticAlgorithm:
                 self.population,
                 self.mutation_rate,
                 self.tournament_size,
+                self.crossover_rate,
                 self.grid,
                 self.player_goal,
                 self.player_start
