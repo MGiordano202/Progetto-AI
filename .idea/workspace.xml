@@ -5,16 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="89a154d6-1bc2-494b-9e36-2de99f1d532c" name="Changes" comment="39th: cleaning">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_03_2025_16_09_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_03_2025_16_09__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Progetto-AI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Progetto-AI.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/Operators/Mutation/segment_mutation.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/Operators/Mutation/segment_mutation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/genetic_algorithm.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/genetic_algorithm.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/population/population.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/population/population.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/a_star.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/a_star.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/ucs.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/ucs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bomberman.py" beforeDir="false" afterPath="$PROJECT_DIR$/bomberman.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/grid.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
