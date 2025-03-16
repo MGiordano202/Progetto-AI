@@ -40,7 +40,7 @@ Il codice è strutturato in moduli separati, con una chiara divisione tra la log
 
 ## Contributi
 
-Se desideri contribuire al progetto, ti invitiamo a fare fork del repository e inviare una pull request con le tue modifiche. Assicurati di seguire le linee guida del progetto per garantire la coerenza del codice e migliorare la qualità complessiva.
+Se desideri contribuire al progetto, ti invito a fare fork del repository e inviare una pull request con le tue modifiche. Assicurati di seguire le linee guida del progetto per garantire la coerenza del codice e migliorare la qualità complessiva.
 
 ## Licenza
 
