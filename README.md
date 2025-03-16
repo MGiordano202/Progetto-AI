@@ -6,7 +6,7 @@ Il progetto **Simplified Explosive Bomberman (SEB)** è un'implementazione sempl
 
 ## Obiettivo
 
-L'obiettivo del progetto è sviluppare un'intelligenza artificiale capace di risolvere il gioco di Bomberman utilizzando vari algoritmi, come A*, UCS e gli **algoritmi genetici** per ottimizzare la ricerca di soluzioni e strategie.
+L'obiettivo del progetto è sviluppare un'intelligenza artificiale capace di risolvere il gioco di Bomberman utilizzando vari algoritmi, come A*, UCS e gli Algoritmi Genetici per ottimizzare la ricerca di soluzioni e strategie.
 
 ## Funzionalità
 - **Algoritmi di ricerca**: L'algoritmo di **ricerca a costo uniforme** è utilizzato per calcolare il percorso ottimale tra il giocatore e l'obiettivo.
