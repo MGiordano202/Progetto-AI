@@ -1,32 +1,47 @@
-# Algoritmo Genetico per la Ricerca del Percorso
+# Simplified Explosive Bomberman (SEB)
 
-Questo progetto implementa un algoritmo genetico per trovare il percorso più breve in una griglia. L'algoritmo utilizza vari operatori come crossover e mutazione per evolvere una popolazione di percorsi verso una soluzione ottimale.
+## Descrizione del Progetto
 
-## Indice
+Il progetto **Simplified Explosive Bomberman (SEB)** è un'implementazione semplificata del classico gioco **Bomberman**, sviluppata nell'ambito del corso di **Fondamenti di Intelligenza Artificiale** presso l'Università degli Studi di Salerno.
 
-- [Installazione](#installazione)
-- [Utilizzo](#utilizzo)
-- [Struttura del Progetto](#struttura-del-progetto)
-- [Contribuire](#contribuire)
-- [Licenza](#licenza)
+## Obiettivo
 
-## Installazione
+L'obiettivo del progetto è sviluppare un'intelligenza artificiale capace di risolvere il gioco di Bomberman utilizzando vari algoritmi, come A*, UCS e gli **algoritmi genetici** per ottimizzare la ricerca di soluzioni e strategie.
 
-1. Clona il repository:
-    ```sh
-    git clone https://github.com/yourusername/genetic-algorithm-pathfinding.git
-    ```
-2. Naviga nella directory del progetto:
-    ```sh
-    cd genetic-algorithm-pathfinding
-    ```
-3. Installa le dipendenze richieste:
-    ```sh
-    pip install -r requirements.txt
-    ```
+## Funzionalità
+- **Algoritmi di ricerca**: L'algoritmo di **ricerca a costo uniforme** è utilizzato per calcolare il percorso ottimale tra il giocatore e l'obiettivo.
+- **Algoritmi di ricerca**: L'algoritmo **A*** è utilizzato per calcolare il percorso tra il giocatore e l'obiettivo.
+- **Algoritmo Genetico**: Viene impiegato un algoritmo genetico per trovare il percorso ottimale, utilizzando operatori di selezione, crossover e mutazione.
 
-## Utilizzo
 
-Per eseguire l'algoritmo genetico, esegui il seguente comando:
-```sh
-python main.py
+## Struttura del Codice
+
+Il codice è strutturato in moduli separati, con una chiara divisione tra la logica di gioco e gli algoritmi di IA. I principali componenti sono:
+-**Ricerca a Costo Uniforme**: Algoritmo di pathfinding che determina il percorso Ottimale tra due punti.
+- **Astar**: Algoritmo di pathfinding utilizzato per determinare il percorso tra due punti.
+- **Algoritmo Genetico**: Contiene la logica per generare, selezionare, incrociare e mutare gli individui, con lo scopo di ottimizzare il percorso del giocatore.
+
+## Come Eseguire il Progetto
+
+1. **Clonare il repository**:
+   ```bash
+   git clone https://github.com/MGiordano202/Simplified-Explosive-Bomberman-SEB
+   ```
+2. **Installare pygame**:
+    Assicurati di avere **Python** installato sul tuo sistema. Puoi installare pygame come segue:
+   ```bash
+   pip install pygame
+   ```
+3. **Eseguire il gioco**:
+   Una volta configurato l'ambiente, puoi eseguire il gioco con il comando:
+   ```bash
+   pytoh main.py
+   ```
+
+## Contributi
+
+Se desideri contribuire al progetto, ti invitiamo a fare fork del repository e inviare una pull request con le tue modifiche. Assicurati di seguire le linee guida del progetto per garantire la coerenza del codice e migliorare la qualità complessiva.
+
+## Licenza
+
+Questo progetto è rilasciato sotto la Licenza MIT. Puoi copiare, modificare e distribuire il codice, ma ricordati di fornire il dovuto riconoscimento agli autori originali.
