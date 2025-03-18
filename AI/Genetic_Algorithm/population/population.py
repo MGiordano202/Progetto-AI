@@ -73,7 +73,6 @@ def next_generation(population, mutation_rate, tournament_size, crossover_rate, 
         while parent1 == parent2:
             parent2 = tournament_selection(population, tournament_size)
 
-            # Decidi se eseguire il crossover in base alla probabilità
         if random.random() < crossover_rate:
             child1, child2 = best_segment_crossover(parent1, parent2, goal, start, grid)
             print(f"[DEBUG] Crossover genitori: {parent1.genome} x {parent2.genome} -> Figli: {child1.genome}, {child2.genome}")
