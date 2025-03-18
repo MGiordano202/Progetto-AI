@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89a154d6-1bc2-494b-9e36-2de99f1d532c" name="Changes" comment="39th: cleaning">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_03_2025_16_09_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_03_2025_16_09__Changes_.xml" beforeDir="false" />
+    <list default="true" id="89a154d6-1bc2-494b-9e36-2de99f1d532c" name="Changes" comment="39th: added crossover_rate">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/Operators/Mutation/segment_mutation.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/Operators/Mutation/segment_mutation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/genetic_algorithm.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/genetic_algorithm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/Genetic_Algorithm/population/population.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/Genetic_Algorithm/population/population.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/a_star.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/a_star.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI/ucs.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/ucs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bomberman.py" beforeDir="false" afterPath="$PROJECT_DIR$/bomberman.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/grid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/doors.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/doors.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/empty.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/empty.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/enemy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/wall.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/wall.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/wooden_box.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/wooden_box.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +88,7 @@
       <recent name="C:\Users\giord\PycharmProjects\Progetto-AI\img" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\giord\PycharmProjects\Progetto-AI\img" />
       <recent name="C:\Users\giord\PycharmProjects\Progetto-AI\AI\Genetic_Algorithm\population" />
       <recent name="C:\Users\giord\PycharmProjects\Progetto-AI\AI" />
       <recent name="C:\Users\Manuel\PycharmProjects\Progetto-AI\img" />
@@ -236,7 +233,8 @@
       <workItem from="1740580955160" duration="7289000" />
       <workItem from="1740750613119" duration="4287000" />
       <workItem from="1741686160483" duration="6813000" />
-      <workItem from="1742029999817" duration="5279000" />
+      <workItem from="1742029999817" duration="7840000" />
+      <workItem from="1742289985070" duration="620000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -534,7 +532,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741085170273</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="39th: added crossover_rate">
+      <option name="closed" value="true" />
+      <created>1742036028209</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1742036028209</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -552,7 +558,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="13th: started to implement the GA" />
     <MESSAGE value="14th: adding more on the GA" />
     <MESSAGE value="15th: completed the GA, next to do is testing" />
     <MESSAGE value="16th: Debugging the GA" />
@@ -577,10 +582,11 @@
     <MESSAGE value="35th: Some adjustments on the GA" />
     <MESSAGE value="36th: starting to implement UCS" />
     <MESSAGE value="39th: cleaning" />
-    <option name="LAST_COMMIT_MESSAGE" value="39th: cleaning" />
+    <MESSAGE value="39th: added crossover_rate" />
+    <option name="LAST_COMMIT_MESSAGE" value="39th: added crossover_rate" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Progetto_AI$main.coverage" NAME="main Coverage Results" MODIFIED="1742035914023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Progetto_AI$main.coverage" NAME="main Coverage Results" MODIFIED="1742290606699" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Progetto_AI$test.coverage" NAME="test Coverage Results" MODIFIED="1740414950984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Progetto_AI$.coverage" NAME=" Coverage Results" MODIFIED="1740494025295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
