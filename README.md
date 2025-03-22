@@ -17,7 +17,8 @@ L'obiettivo del progetto è sviluppare un'intelligenza artificiale capace di ris
 ## Struttura del Codice
 
 Il codice è strutturato in moduli separati, con una chiara divisione tra la logica di gioco e gli algoritmi di IA. I principali componenti sono:
--**Ricerca a Costo Uniforme**: Algoritmo di pathfinding che determina il percorso Ottimale tra due punti.
+
+- **Ricerca a Costo Uniforme**: Algoritmo di pathfinding che determina il percorso Ottimale tra due punti.
 - **Astar**: Algoritmo di pathfinding utilizzato per determinare il percorso tra due punti.
 - **Algoritmo Genetico**: Contiene la logica per generare, selezionare, incrociare e mutare gli individui, con lo scopo di ottimizzare il percorso del giocatore.
 
@@ -40,7 +41,7 @@ Il codice è strutturato in moduli separati, con una chiara divisione tra la log
 
 ## Contributi
 
-Se desideri contribuire al progetto, ti invito a fare fork del repository e inviare una pull request con le tue modifiche. Assicurati di seguire le linee guida del progetto per garantire la coerenza del codice e migliorare la qualità complessiva.
+Se desideri contribuire al progetto, ti invito a fare fork del repository e inviare una pull request con le tue modifiche.
 
 ## Licenza
 
